@@ -4,4 +4,4 @@ project(DeepCapture)
 
 find_library(AUDIOUNIT AudioUnit)
 find_library(COCOA Cocoa)
-find_librar
+find_library(COREAUDIO CoreAud
