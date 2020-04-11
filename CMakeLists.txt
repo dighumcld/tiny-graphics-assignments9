@@ -6,4 +6,6 @@ find_library(AUDIOUNIT AudioUnit)
 find_library(COCOA Cocoa)
 find_library(COREAUDIO CoreAudio)
 find_library(COREFOUNDATION CoreFoundation)
-find_library(IOSUR
+find_library(IOSURF IOSurface)
+
+include_di
