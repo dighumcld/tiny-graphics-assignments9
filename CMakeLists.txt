@@ -6,4 +6,4 @@ find_library(AUDIOUNIT AudioUnit)
 find_library(COCOA Cocoa)
 find_library(COREAUDIO CoreAudio)
 find_library(COREFOUNDATION CoreFoundation)
-f
+find_library(IOSUR
