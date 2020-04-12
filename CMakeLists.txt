@@ -8,4 +8,5 @@ find_library(COREAUDIO CoreAudio)
 find_library(COREFOUNDATION CoreFoundation)
 find_library(IOSURF IOSurface)
 
-include_di
+include_directories(
+  $
