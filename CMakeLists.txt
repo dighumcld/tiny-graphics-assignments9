@@ -11,4 +11,5 @@ find_library(IOSURF IOSurface)
 include_directories(
   ${AUDIOUNIT}
   ${COCOA}
-  ${
+  ${COREAUDIO}
+  ${C
