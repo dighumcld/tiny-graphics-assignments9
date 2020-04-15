@@ -12,4 +12,4 @@ include_directories(
   ${AUDIOUNIT}
   ${COCOA}
   ${COREAUDIO}
-  ${C
+  ${COREFOUNDATION}
