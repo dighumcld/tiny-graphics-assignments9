@@ -13,3 +13,5 @@ include_directories(
   ${COCOA}
   ${COREAUDIO}
   ${COREFOUNDATION}
+  ${IOSURF}
+)
