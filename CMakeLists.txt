@@ -16,4 +16,6 @@ include_directories(
   ${IOSURF}
 )
 
-include_dire
+include_directories(include)
+
+fil
