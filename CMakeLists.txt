@@ -18,4 +18,5 @@ include_directories(
 
 include_directories(include)
 
-fil
+file(GLOB HEADERS
+  include
