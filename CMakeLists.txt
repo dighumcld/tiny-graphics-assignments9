@@ -19,4 +19,7 @@ include_directories(
 include_directories(include)
 
 file(GLOB HEADERS
-  include
+  includes/*.h
+)
+
+file(GL
