@@ -23,4 +23,7 @@ file(GLOB HEADERS
 )
 
 file(GLOB SOURCES
-  src/*.
+  src/*.cpp
+  src/*.mm
+)
+
