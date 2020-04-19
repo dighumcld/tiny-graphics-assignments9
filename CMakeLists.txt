@@ -22,4 +22,5 @@ file(GLOB HEADERS
   includes/*.h
 )
 
-file(GL
+file(GLOB SOURCES
+  src/*.
