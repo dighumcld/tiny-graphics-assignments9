@@ -27,4 +27,5 @@ file(GLOB SOURCES
   src/*.mm
 )
 
-add_library(${PROJECT
+add_library(${PROJECT_NAME} SHARED
+  $
