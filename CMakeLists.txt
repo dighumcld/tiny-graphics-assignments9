@@ -27,3 +27,4 @@ file(GLOB SOURCES
   src/*.mm
 )
 
+add_library(${PROJECT
