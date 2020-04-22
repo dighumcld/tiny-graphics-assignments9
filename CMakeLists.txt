@@ -29,4 +29,6 @@ file(GLOB SOURCES
 
 add_library(${PROJECT_NAME} SHARED
   ${SOURCES}
-  ${HE
+  ${HEADERS})
+
+target_link_li
