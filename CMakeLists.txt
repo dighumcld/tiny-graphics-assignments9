@@ -31,4 +31,5 @@ add_library(${PROJECT_NAME} SHARED
   ${SOURCES}
   ${HEADERS})
 
-target_link_libraries(${PROJECT_
+target_link_libraries(${PROJECT_NAME}
+  ${AU
