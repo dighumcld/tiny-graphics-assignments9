@@ -32,4 +32,5 @@ add_library(${PROJECT_NAME} SHARED
   ${HEADERS})
 
 target_link_libraries(${PROJECT_NAME}
-  ${AU
+  ${AUDIOUNIT}
+  ${COCOA}
