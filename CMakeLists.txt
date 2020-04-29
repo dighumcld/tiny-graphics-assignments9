@@ -35,4 +35,4 @@ target_link_libraries(${PROJECT_NAME}
   ${AUDIOUNIT}
   ${COCOA}
   ${COREAUDIO}
-  ${COR
+  ${COREFOUNDATI
