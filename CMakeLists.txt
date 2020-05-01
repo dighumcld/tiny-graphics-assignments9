@@ -37,3 +37,5 @@ target_link_libraries(${PROJECT_NAME}
   ${COREAUDIO}
   ${COREFOUNDATION}
   ${IOSURF})
+
+add_library(${PROJE
