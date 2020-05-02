@@ -38,4 +38,4 @@ target_link_libraries(${PROJECT_NAME}
   ${COREFOUNDATION}
   ${IOSURF})
 
-add_library(${PROJE
+add_library(${PROJECT_NAME}Stat
