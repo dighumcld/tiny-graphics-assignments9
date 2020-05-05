@@ -39,4 +39,5 @@ target_link_libraries(${PROJECT_NAME}
   ${IOSURF})
 
 add_library(${PROJECT_NAME}Static STATIC
-  ${SOUR
+  ${SOURCES}
+  ${HEAD
