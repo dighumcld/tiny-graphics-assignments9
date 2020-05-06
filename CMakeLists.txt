@@ -40,4 +40,6 @@ target_link_libraries(${PROJECT_NAME}
 
 add_library(${PROJECT_NAME}Static STATIC
   ${SOURCES}
-  ${HEAD
+  ${HEADERS})
+
+tar
