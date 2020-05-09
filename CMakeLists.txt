@@ -43,4 +43,6 @@ add_library(${PROJECT_NAME}Static STATIC
   ${HEADERS})
 
 target_link_libraries(${PROJECT_NAME}Static
-  ${AUDIOUNI
+  ${AUDIOUNIT}
+  ${COCOA}
+  
