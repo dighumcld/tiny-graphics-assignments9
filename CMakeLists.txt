@@ -45,4 +45,5 @@ add_library(${PROJECT_NAME}Static STATIC
 target_link_libraries(${PROJECT_NAME}Static
   ${AUDIOUNIT}
   ${COCOA}
-  
+  ${COREAUDIO}
+  ${
