@@ -47,4 +47,6 @@ target_link_libraries(${PROJECT_NAME}Static
   ${COCOA}
   ${COREAUDIO}
   ${COREFOUNDATION}
-  ${I
+  ${IOSURF})
+
+install(
