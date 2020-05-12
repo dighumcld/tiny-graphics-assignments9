@@ -49,4 +49,4 @@ target_link_libraries(${PROJECT_NAME}Static
   ${COREFOUNDATION}
   ${IOSURF})
 
-install(
+install(TARGETS ${PROJECT_NA
