@@ -49,4 +49,5 @@ target_link_libraries(${PROJECT_NAME}Static
   ${COREFOUNDATION}
   ${IOSURF})
 
-install(TARGETS ${PROJECT_NA
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTI
