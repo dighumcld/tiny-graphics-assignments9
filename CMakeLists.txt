@@ -51,4 +51,6 @@ target_link_libraries(${PROJECT_NAME}Static
 
 install(TARGETS ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
-  LIBRARY DESTINATI
+  LIBRARY DESTINATION lib)
+
+in
