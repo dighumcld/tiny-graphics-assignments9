@@ -57,4 +57,5 @@ install(TARGETS ${PROJECT_NAME}Static
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib)
 
-add_subdire
+add_subdirectory(swig)
+add
