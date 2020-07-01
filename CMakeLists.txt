@@ -58,4 +58,4 @@ install(TARGETS ${PROJECT_NAME}Static
   LIBRARY DESTINATION lib)
 
 add_subdirectory(swig)
-add_subdirectory(exa
+add_subdirectory(examples)
