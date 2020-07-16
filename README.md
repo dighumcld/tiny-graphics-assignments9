@@ -1,3 +1,3 @@
 ## Deep Capture
 
-Display / Camera Captur
+Display / Camera Capturing for Deep
