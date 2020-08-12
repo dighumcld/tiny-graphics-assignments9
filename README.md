@@ -1,3 +1,3 @@
 ## Deep Capture
 
-Display / Camera Capturing for Deep
+Display / Camera Capturing for Deep Learning Pip
