@@ -2,4 +2,4 @@
 
 Display / Camera Capturing for Deep Learning Pipeline
 
-Designed
+Designed for real-time deep/
