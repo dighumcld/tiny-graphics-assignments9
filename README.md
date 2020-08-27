@@ -2,4 +2,6 @@
 
 Display / Camera Capturing for Deep Learning Pipeline
 
-Designed for real-time deep/reinfororcement learning agent in real environmen
+Designed for real-time deep/reinfororcement learning agent in real environment.
+
+Capturing video dat
