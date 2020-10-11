@@ -8,4 +8,6 @@ Capturing video data in numpy format at high frame rate
 
 ![demo](https://raw.githubusercontent.com/zzh8829/deep-capture/master/demo.png)
 
-## C
+## Compiling
+```bash
+./
