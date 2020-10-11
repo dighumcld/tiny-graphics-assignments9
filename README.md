@@ -10,4 +10,5 @@ Capturing video data in numpy format at high frame rate
 
 ## Compiling
 ```bash
-./
+./build.sh
+cd lib/py
