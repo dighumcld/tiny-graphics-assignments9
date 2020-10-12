@@ -12,4 +12,6 @@ Capturing video data in numpy format at high frame rate
 ```bash
 ./build.sh
 cd lib/python
-pip install -e
+pip install -e .
+```
+pre-req: cm
