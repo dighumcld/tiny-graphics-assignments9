@@ -16,4 +16,5 @@ pip install -e .
 ```
 pre-req: cmake, numpy, swig, python3
 
-## Usag
+## Usage
+See examples/one-fra
