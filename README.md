@@ -14,4 +14,6 @@ Capturing video data in numpy format at high frame rate
 cd lib/python
 pip install -e .
 ```
-pre-req: cmake, numpy, swig, 
+pre-req: cmake, numpy, swig, python3
+
+## Usag
