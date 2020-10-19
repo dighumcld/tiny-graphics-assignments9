@@ -19,4 +19,5 @@ pre-req: cmake, numpy, swig, python3
 ## Usage
 See examples/one-frame/main.py
 
-```pyth
+```python
+import deep
