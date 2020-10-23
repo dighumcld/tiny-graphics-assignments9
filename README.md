@@ -20,4 +20,5 @@ pre-req: cmake, numpy, swig, python3
 See examples/one-frame/main.py
 
 ```python
-import deep
+import deep_capture
+import m
