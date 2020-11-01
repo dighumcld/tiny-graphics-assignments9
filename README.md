@@ -21,4 +21,4 @@ See examples/one-frame/main.py
 
 ```python
 import deep_capture
-import m
+import matplotlib.pyplot
