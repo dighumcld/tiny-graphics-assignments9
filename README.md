@@ -28,4 +28,5 @@ dc = deep_capture.create_display_capture()
 dc.init()
 dc.start()
 
-time.sleep(0.1) # Wait for st
+time.sleep(0.1) # Wait for start
+frame = dc.c
