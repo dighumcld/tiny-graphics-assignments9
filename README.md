@@ -29,4 +29,5 @@ dc.init()
 dc.start()
 
 time.sleep(0.1) # Wait for start
-frame = dc.c
+frame = dc.capture()
+plt.
