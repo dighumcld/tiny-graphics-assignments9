@@ -42,4 +42,5 @@ dc.stop()
 cd build
 make run-one-frame
 
-cd bui
+cd build
+make run-yolo-scr
