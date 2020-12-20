@@ -40,4 +40,6 @@ dc.stop()
 
 ```bash
 cd build
-make ru
+make run-one-frame
+
+cd bui
