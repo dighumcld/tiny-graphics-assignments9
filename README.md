@@ -38,4 +38,6 @@ dc.stop()
 
 ## Running Examples
 
-```bas
+```bash
+cd build
+make ru
