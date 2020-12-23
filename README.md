@@ -43,4 +43,7 @@ cd build
 make run-one-frame
 
 cd build
-make run-yolo-scr
+make run-yolo-screen
+```
+
+or wit
