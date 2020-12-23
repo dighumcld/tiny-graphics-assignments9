@@ -46,4 +46,6 @@ cd build
 make run-yolo-screen
 ```
 
-or wit
+or without make
+
+```bash
