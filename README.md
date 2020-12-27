@@ -49,3 +49,4 @@ make run-yolo-screen
 or without make
 
 ```bash
+cd exampl
