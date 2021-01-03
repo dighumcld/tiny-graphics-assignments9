@@ -50,4 +50,5 @@ or without make
 
 ```bash
 cd examples/one-frame
-p
+python main.py
+
