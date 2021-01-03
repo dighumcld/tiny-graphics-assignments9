@@ -52,3 +52,4 @@ or without make
 cd examples/one-frame
 python main.py
 
+cd examples/
