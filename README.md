@@ -53,4 +53,7 @@ cd examples/one-frame
 python main.py
 
 cd examples/yolo-screen
-python main
+python main.py
+```
+
+## Note
