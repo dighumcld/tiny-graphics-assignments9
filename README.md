@@ -52,4 +52,5 @@ or without make
 cd examples/one-frame
 python main.py
 
-cd examples/
+cd examples/yolo-screen
+python main
