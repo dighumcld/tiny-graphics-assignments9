@@ -58,4 +58,6 @@ python main.py
 
 ## Note
 
-Only available on mac for
+Only available on mac for now
+
+Default format is *
