@@ -58,4 +58,4 @@ python main.py
 
 ## Note
 
-Only avail
+Only available on mac for
