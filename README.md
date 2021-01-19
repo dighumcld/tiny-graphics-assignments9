@@ -62,4 +62,5 @@ Only available on mac for now
 
 Default format is **BGRA**
 
-To run t
+To run the demo yolo-screen app
+dow
