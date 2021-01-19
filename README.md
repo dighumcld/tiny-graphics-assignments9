@@ -60,4 +60,6 @@ python main.py
 
 Only available on mac for now
 
-Default format is *
+Default format is **BGRA**
+
+To run t
