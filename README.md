@@ -63,4 +63,4 @@ Only available on mac for now
 Default format is **BGRA**
 
 To run the demo yolo-screen app
-dow
+download YOLO_tiny.ckp
