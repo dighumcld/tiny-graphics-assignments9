@@ -65,4 +65,4 @@ Default format is **BGRA**
 To run the demo yolo-screen app
 download YOLO_tiny.ckpt from
 
-https:/
+https://drive.google.co
