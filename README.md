@@ -67,4 +67,4 @@ download YOLO_tiny.ckpt from
 
 https://drive.google.com/file/d/0B2JbaJSrWLpza0FtQlc3ejhMTTA/view?usp=sharing
 
-and place it in 
+and place it in examples/yolo-scre
