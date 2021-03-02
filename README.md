@@ -69,4 +69,5 @@ https://drive.google.com/file/d/0B2JbaJSrWLpza0FtQlc3ejhMTTA/view?usp=sharing
 
 and place it in examples/yolo-screen/
 
-- 30 FPS on Desktop with GTX 970 and i5-
+- 30 FPS on Desktop with GTX 970 and i5-4690K
+- 3 FPS on 20
