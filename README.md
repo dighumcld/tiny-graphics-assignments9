@@ -73,3 +73,5 @@ and place it in examples/yolo-screen/
 - 3 FPS on 2015 Macbook Pro Retina 13" (not bad for CPU only)
 
 ## Credits
+
+Tensorflow YOLO impl
