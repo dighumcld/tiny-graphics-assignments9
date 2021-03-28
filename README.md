@@ -74,4 +74,4 @@ and place it in examples/yolo-screen/
 
 ## Credits
 
-Tensorflow YOLO implementation modified from https://gith
+Tensorflow YOLO implementation modified from https://github.com/gliese581
