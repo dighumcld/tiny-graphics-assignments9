@@ -1,1 +1,1 @@
-a
+add_subdirectory(mac-main)
