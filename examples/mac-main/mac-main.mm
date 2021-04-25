@@ -29,3 +29,19 @@ pthread_mutex_t mutex_update;
 
 void update(CGDisplayStreamFrameStatus status,
       uint64_t displayTime,
+      IOSurfaceRef frameSurface,
+      CGDisplayStreamUpdateRef updateRef)
+{
+  if (status == kCGDisplayStreamFrameStatusFrameComplete && frameSurface != NULL)
+  {
+    IOSurfaceLock(frameSurface, kIOSurfaceLockReadOnly, NULL);
+
+    void* baseAddress = IOSurfaceGetBaseAddress(frameSurface);
+    int bytesPerRow = IOSurfaceGetBytesPerRow(frameSurface);
+
+    int totalBytes = bytesPerRow * height;
+    void *rawData = malloc(totalBytes);
+    memcpy(rawData, baseAddress, totalBytes);
+    usleep(1000);
+
+    IOSurfaceUnlock(frameSurface, kIOSurfaceLockReadOnly, NULL);
