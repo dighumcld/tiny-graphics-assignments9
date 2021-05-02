@@ -79,3 +79,18 @@ void init()
 {
   CGDirectDisplayID displays[MAX_DISPLAYS];
   uint32_t numDisplays;
+
+  CGGetActiveDisplayList(MAX_DISPLAYS, displays, &numDisplays);
+
+  cout << "Displays["<< numDisplays << "]: ";
+  for(int i = 0; i < numDisplays; i++)
+  {
+    cout << displays[i] << " ";
+  }
+  cout << endl;
+
+  pthread_mutex_init(&mutex_update, NULL);
+
+  CGDirectDisplayID displayID = CGMainDisplayID();
+
+  NSDictionary *prop = @{
