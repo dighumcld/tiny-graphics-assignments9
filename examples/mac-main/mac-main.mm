@@ -45,3 +45,17 @@ void update(CGDisplayStreamFrameStatus status,
     usleep(1000);
 
     IOSurfaceUnlock(frameSurface, kIOSurfaceLockReadOnly, NULL);
+
+    // cout << "Update: " << displayTime << endl;
+
+    size_t dropped_frames = CGDisplayStreamUpdateGetDropCount(updateRef);
+    if (dropped_frames > 0)
+    {
+      cout << "Dropped: " << dropped_frames << " frames" << endl;
+    }
+
+    if(!last_tick) last_tick = clock();
+
+    pthread_mutex_lock(&mutex_update);
+
+    fpassed++;
