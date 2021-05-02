@@ -94,3 +94,25 @@ void init()
   CGDirectDisplayID displayID = CGMainDisplayID();
 
   NSDictionary *prop = @{
+    (NSString*)kCGDisplayStreamShowCursor: (id)kCFBooleanTrue
+  };
+
+  stream_ref = CGDisplayStreamCreateWithDispatchQueue(displayID,
+    CGDisplayPixelsWide(displayID),
+    CGDisplayPixelsHigh(displayID),
+    'BGRA',
+    (CFDictionaryRef)prop,
+    dispatch_queue_create("me.zihao.deep-capture", DISPATCH_QUEUE_SERIAL),
+     ^(CGDisplayStreamFrameStatus status,
+      uint64_t displayTime,
+      IOSurfaceRef frameSurface,
+      CGDisplayStreamUpdateRef updateRef)
+    {
+      update(status, displayTime,
+        frameSurface, updateRef);
+    });
+}
+
+void start()
+{
+  CGError err = CGDisplayStreamStart(stream_ref);
