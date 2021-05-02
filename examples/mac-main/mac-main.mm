@@ -59,3 +59,23 @@ void update(CGDisplayStreamFrameStatus status,
     pthread_mutex_lock(&mutex_update);
 
     fpassed++;
+    // cout << "Update: " << fpassed << clock() - last_tick << " " << CLOCKS_PER_SEC << endl;
+
+    // usleep(1000);
+    // cout << (clock() - last_tick)/(double)CLOCKS_PER_SEC  << endl;
+    if((clock() - last_tick)/(double)CLOCKS_PER_SEC >= 0.05)
+    {
+      // cout << "Update: " << fpassed << clock() - last_tick << " " << CLOCKS_PER_SEC << endl;
+      cout << "FPS: " << fpassed/(clock() - last_tick)/(double)CLOCKS_PER_SEC << endl;
+
+      last_tick = clock();
+      fpassed = 0;
+    }
+    pthread_mutex_unlock(&mutex_update);
+  }
+}
+
+void init()
+{
+  CGDirectDisplayID displays[MAX_DISPLAYS];
+  uint32_t numDisplays;
