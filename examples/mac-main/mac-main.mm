@@ -116,3 +116,18 @@ void init()
 void start()
 {
   CGError err = CGDisplayStreamStart(stream_ref);
+
+  if (err != kCGErrorSuccess)
+  {
+    printf("Error: start failed: %d\n", err);
+  }
+}
+
+void stop()
+{
+  CGError err = CGDisplayStreamStop(stream_ref);
+
+  if (err != kCGErrorSuccess)
+  {
+    printf("Error: stop failed: %d\n", err);
+  }
