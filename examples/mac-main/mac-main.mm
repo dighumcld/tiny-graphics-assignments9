@@ -131,3 +131,16 @@ void stop()
   {
     printf("Error: stop failed: %d\n", err);
   }
+}
+
+// static inline void display_stream_update(struct display_capture *dc,
+//     CGDisplayStreamFrameStatus status, uint64_t display_time,
+//     IOSurfaceRef frame_surface, CGDisplayStreamUpdateRef update_ref)
+// {
+//   UNUSED_PARAMETER(display_time);
+//   UNUSED_PARAMETER(update_ref);
+
+//   if (status == kCGDisplayStreamFrameStatusStopped) {
+//     os_event_signal(dc->disp_finished);
+//     return;
+//   }
