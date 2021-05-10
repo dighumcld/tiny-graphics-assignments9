@@ -144,3 +144,21 @@ void stop()
 //     os_event_signal(dc->disp_finished);
 //     return;
 //   }
+
+//   IOSurfaceRef prev_current = NULL;
+
+//   if (frame_surface && !pthread_mutex_lock(&dc->mutex)) {
+//     prev_current = dc->current;
+//     dc->current = frame_surface;
+//     CFRetain(dc->current);
+//     IOSurfaceIncrementUseCount(dc->current);
+
+//     update_window_params(dc);
+
+//     pthread_mutex_unlock(&dc->mutex);
+//   }
+
+//   if (prev_current) {
+//     IOSurfaceDecrementUseCount(prev_current);
+//     CFRelease(prev_current);
+//   }
