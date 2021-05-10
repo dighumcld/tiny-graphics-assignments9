@@ -162,3 +162,18 @@ void stop()
 //     IOSurfaceDecrementUseCount(prev_current);
 //     CFRelease(prev_current);
 //   }
+
+// }
+
+int main(int argc, char* argv[])
+{
+  DeepCapture *dc = create_display_capture();
+  dc->init();
+  dc->start();
+  dc->stop();
+  delete dc;
+
+  cout << "Hello" << endl;
+
+  init();
+  start();
