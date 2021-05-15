@@ -177,3 +177,9 @@ int main(int argc, char* argv[])
 
   init();
   start();
+
+  usleep(100000000);
+
+  stop();
+  return 0;
+}
