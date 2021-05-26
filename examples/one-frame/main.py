@@ -2,4 +2,5 @@ import deep_capture
 import matplotlib.pyplot as plt
 import time
 
-dc = deep_capture.create_display
+dc = deep_capture.create_display_capture()
+dc.ini
