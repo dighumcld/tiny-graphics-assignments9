@@ -3,4 +3,7 @@ import matplotlib.pyplot as plt
 import time
 
 dc = deep_capture.create_display_capture()
-dc.ini
+dc.init()
+dc.start()
+
+time.slee
