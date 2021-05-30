@@ -6,4 +6,4 @@ dc = deep_capture.create_display_capture()
 dc.init()
 dc.start()
 
-time.slee
+time.sleep(0.1) # Wa
