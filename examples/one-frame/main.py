@@ -7,4 +7,4 @@ dc.init()
 dc.start()
 
 time.sleep(0.1) # Wait for start
-frame = d
+frame = dc.capture()
