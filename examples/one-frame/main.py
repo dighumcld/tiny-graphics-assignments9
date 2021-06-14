@@ -8,4 +8,4 @@ dc.start()
 
 time.sleep(0.1) # Wait for start
 frame = dc.capture()
-plt.imshow(frame[...,[2,1,0
+plt.imshow(frame[...,[2,1,0,3]]) #BGRA -> 
