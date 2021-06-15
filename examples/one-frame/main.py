@@ -11,4 +11,4 @@ frame = dc.capture()
 plt.imshow(frame[...,[2,1,0,3]]) #BGRA -> RGBA
 plt.show()
 
-d
+dc.stop()
