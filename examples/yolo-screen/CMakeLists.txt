@@ -1,1 +1,3 @@
-set(EXEC
+set(EXECUTABLE yolo-screen)
+
+a
