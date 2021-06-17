@@ -1,3 +1,3 @@
 set(EXECUTABLE yolo-screen)
 
-a
+add_custom_t
