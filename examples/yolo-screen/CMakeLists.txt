@@ -1,3 +1,4 @@
 set(EXECUTABLE yolo-screen)
 
-add_custom_target(run-${E
+add_custom_target(run-${EXECUTABLE}
+  C
