@@ -1,4 +1,4 @@
 set(EXECUTABLE yolo-screen)
 
 add_custom_target(run-${EXECUTABLE}
-  C
+  COMMAND python main.p
