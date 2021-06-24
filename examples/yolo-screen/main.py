@@ -1,2 +1,4 @@
 import time
-import matplotlib.p
+import matplotlib.pyplot as plt
+
+import
