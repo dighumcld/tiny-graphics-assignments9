@@ -6,4 +6,5 @@ import deep_capture
 
 import yolo_tf
 
-import numpy a
+import numpy as np
+import cv2
