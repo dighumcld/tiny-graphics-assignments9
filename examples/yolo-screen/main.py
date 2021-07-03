@@ -9,4 +9,4 @@ import yolo_tf
 import numpy as np
 import cv2
 import pygame
-from pygame.locals 
+from pygame.locals import *
