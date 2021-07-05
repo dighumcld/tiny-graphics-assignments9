@@ -11,4 +11,5 @@ import cv2
 import pygame
 from pygame.locals import *
 
-CAPTURE_ORIGIN
+CAPTURE_ORIGIN = [200,0]
+CAPTU
