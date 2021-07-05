@@ -12,4 +12,4 @@ import pygame
 from pygame.locals import *
 
 CAPTURE_ORIGIN = [200,0]
-CAPTU
+CAPTURE_SIZE = [
