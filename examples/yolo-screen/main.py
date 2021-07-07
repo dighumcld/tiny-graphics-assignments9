@@ -14,4 +14,6 @@ from pygame.locals import *
 CAPTURE_ORIGIN = [200,0]
 CAPTURE_SIZE = [800,500]
 
-# x, y, 
+# x, y, w, h
+def main(argv):
+   
