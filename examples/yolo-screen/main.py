@@ -17,4 +17,4 @@ CAPTURE_SIZE = [800,500]
 # x, y, w, h
 def main(argv):
     if len(argv) > 1:
-        CAP
+        CAPTURE_ORIGIN[0] 
