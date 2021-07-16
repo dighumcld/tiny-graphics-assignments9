@@ -18,4 +18,4 @@ CAPTURE_SIZE = [800,500]
 def main(argv):
     if len(argv) > 1:
         CAPTURE_ORIGIN[0] = int(argv[1])
-  
+        CAPTURE_ORIGI
