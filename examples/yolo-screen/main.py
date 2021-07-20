@@ -19,4 +19,5 @@ def main(argv):
     if len(argv) > 1:
         CAPTURE_ORIGIN[0] = int(argv[1])
         CAPTURE_ORIGIN[1] = int(argv[2])
-        CAPTURE_SIZE[0] = int(argv[3]
+        CAPTURE_SIZE[0] = int(argv[3])
+        CAPT
