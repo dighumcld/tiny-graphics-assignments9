@@ -22,4 +22,4 @@ def main(argv):
         CAPTURE_SIZE[0] = int(argv[3])
         CAPTURE_SIZE[1] = int(argv[4])
 
-    SCREEN_SI
+    SCREEN_SIZE = CAPTURE_SIZE
