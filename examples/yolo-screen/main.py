@@ -25,4 +25,4 @@ def main(argv):
     SCREEN_SIZE = CAPTURE_SIZE
     SCREEN_FLAG = DOUBLEBUF|HWSURFACE|RESIZABLE
 
-    
+    # frame = cv2.imread(
