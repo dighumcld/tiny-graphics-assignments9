@@ -26,4 +26,4 @@ def main(argv):
     SCREEN_FLAG = DOUBLEBUF|HWSURFACE|RESIZABLE
 
     # frame = cv2.imread('person.jpg')
-    # fr
+    # frame = cv2.cvtCo
