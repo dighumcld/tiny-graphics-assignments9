@@ -28,4 +28,4 @@ def main(argv):
     # frame = cv2.imread('person.jpg')
     # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-  
+    yolo = yolo_tf.
