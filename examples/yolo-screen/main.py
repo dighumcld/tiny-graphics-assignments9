@@ -29,4 +29,4 @@ def main(argv):
     # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     yolo = yolo_tf.YOLO_TF()
-    dc = deep_capture.cr
+    dc = deep_capture.create_displa
