@@ -33,4 +33,5 @@ def main(argv):
     dc.init()
     dc.start()
 
-    pyg
+    pygame.init()
+    
