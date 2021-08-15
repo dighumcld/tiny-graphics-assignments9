@@ -31,4 +31,6 @@ def main(argv):
     yolo = yolo_tf.YOLO_TF()
     dc = deep_capture.create_display_capture()
     dc.init()
-    d
+    dc.start()
+
+    pyg
