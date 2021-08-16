@@ -34,4 +34,4 @@ def main(argv):
     dc.start()
 
     pygame.init()
-    
+    screen = pygame.display
