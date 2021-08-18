@@ -34,4 +34,4 @@ def main(argv):
     dc.start()
 
     pygame.init()
-    screen = pygame.display.set_mode(SCREE
+    screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN
