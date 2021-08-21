@@ -35,4 +35,4 @@ def main(argv):
 
     pygame.init()
     screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
-    pygame.display.set
+    pygame.display.set_caption("YOLO Scre
