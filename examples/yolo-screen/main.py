@@ -36,4 +36,5 @@ def main(argv):
     pygame.init()
     screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
     pygame.display.set_caption("YOLO Screen")
-    font = pygame.font.SysFont("Cou
+    font = pygame.font.SysFont("Courier New",15)
+    
