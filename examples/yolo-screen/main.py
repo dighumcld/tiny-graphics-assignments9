@@ -39,4 +39,5 @@ def main(argv):
     font = pygame.font.SysFont("Courier New",15)
     clock = pygame.time.Clock()
 
-    dete
+    detect = True
+   
