@@ -41,3 +41,6 @@ def main(argv):
 
     detect = True
     running = True
+
+    try:
+        w
