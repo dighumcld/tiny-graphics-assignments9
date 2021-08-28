@@ -40,4 +40,4 @@ def main(argv):
     clock = pygame.time.Clock()
 
     detect = True
-   
+    running = True
