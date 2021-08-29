@@ -43,4 +43,5 @@ def main(argv):
     running = True
 
     try:
-        w
+        while running:
+        
