@@ -44,4 +44,4 @@ def main(argv):
 
     try:
         while running:
-        
+            clock.tick
