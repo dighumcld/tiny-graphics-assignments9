@@ -45,4 +45,4 @@ def main(argv):
     try:
         while running:
             clock.tick()
-            for event 
+            for event in pygame.event.ge
