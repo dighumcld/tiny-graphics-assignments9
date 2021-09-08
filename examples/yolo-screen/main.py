@@ -48,4 +48,4 @@ def main(argv):
             for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
-                el
+                elif event.type ==
