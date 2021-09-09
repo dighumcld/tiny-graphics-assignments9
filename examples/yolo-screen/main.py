@@ -48,4 +48,5 @@ def main(argv):
             for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
-                elif event.type ==
+                elif event.type == VIDEORESIZE:
+   
