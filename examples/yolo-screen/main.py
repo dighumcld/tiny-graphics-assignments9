@@ -49,4 +49,5 @@ def main(argv):
                 if event.type == QUIT:
                     running = False
                 elif event.type == VIDEORESIZE:
-                    SCREEN_SIZE = event.dic
+                    SCREEN_SIZE = event.dict['size']
+      
