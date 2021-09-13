@@ -50,4 +50,4 @@ def main(argv):
                     running = False
                 elif event.type == VIDEORESIZE:
                     SCREEN_SIZE = event.dict['size']
-      
+                    scr
