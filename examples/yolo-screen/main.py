@@ -50,4 +50,5 @@ def main(argv):
                     running = False
                 elif event.type == VIDEORESIZE:
                     SCREEN_SIZE = event.dict['size']
-                    screen = pygame.display.set_mode(SCREEN_SIZE, 
+                    screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
+   
