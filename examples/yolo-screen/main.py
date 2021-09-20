@@ -51,4 +51,5 @@ def main(argv):
                 elif event.type == VIDEORESIZE:
                     SCREEN_SIZE = event.dict['size']
                     screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
-                elif event.type == K
+                elif event.type == KEYDOWN:
+      
