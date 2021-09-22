@@ -52,4 +52,5 @@ def main(argv):
                     SCREEN_SIZE = event.dict['size']
                     screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
                 elif event.type == KEYDOWN:
-                    if event.unicode =
+                    if event.unicode == "D":
+       
