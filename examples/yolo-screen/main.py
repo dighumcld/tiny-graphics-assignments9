@@ -53,4 +53,4 @@ def main(argv):
                     screen = pygame.display.set_mode(SCREEN_SIZE, SCREEN_FLAG)
                 elif event.type == KEYDOWN:
                     if event.unicode == "D":
-                
+                        dete
