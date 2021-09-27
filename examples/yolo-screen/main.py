@@ -55,4 +55,6 @@ def main(argv):
                     if event.unicode == "D":
                         detect = not detect
 
-            screen.f
+            screen.fill((0,0,0))
+
+ 
