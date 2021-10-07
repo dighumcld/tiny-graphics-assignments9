@@ -57,4 +57,6 @@ def main(argv):
 
             screen.fill((0,0,0))
 
-            frame = dc.capture((CAPTURE_ORIGIN[0], CAPTURE_ORIGIN[1], CAPTURE_SIZE[0], CAP
+            frame = dc.capture((CAPTURE_ORIGIN[0], CAPTURE_ORIGIN[1], CAPTURE_SIZE[0], CAPTURE_SIZE[1]))
+
+ 
