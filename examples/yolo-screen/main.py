@@ -59,4 +59,4 @@ def main(argv):
 
             frame = dc.capture((CAPTURE_ORIGIN[0], CAPTURE_ORIGIN[1], CAPTURE_SIZE[0], CAPTURE_SIZE[1]))
 
-            frame = cv2.cv
+            frame = cv2.cvtColor(fra
