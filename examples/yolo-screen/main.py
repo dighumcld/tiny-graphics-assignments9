@@ -61,4 +61,5 @@ def main(argv):
 
             frame = cv2.cvtColor(frame, cv2.COLOR_BGRA2RGB)
 
+            if detect:
    
