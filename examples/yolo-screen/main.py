@@ -63,4 +63,4 @@ def main(argv):
 
             if detect:
                 results = yolo.detect_from_cvmat(frame)
-                img = yolo
+                img = yolo.show_results(frame, 
