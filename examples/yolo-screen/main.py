@@ -67,4 +67,4 @@ def main(argv):
             else:
                 img = frame
 
-  
+            frame
