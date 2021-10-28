@@ -67,4 +67,4 @@ def main(argv):
             else:
                 img = frame
 
-            frame_sf = pygame.image.fro
+            frame_sf = pygame.image.frombuffer(img.tostri
