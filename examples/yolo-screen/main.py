@@ -67,4 +67,4 @@ def main(argv):
             else:
                 img = frame
 
-            frame_sf = pygame.image.frombuffer(img.tostring(), img.shap
+            frame_sf = pygame.image.frombuffer(img.tostring(), img.shape[1::-1], "RGB")
