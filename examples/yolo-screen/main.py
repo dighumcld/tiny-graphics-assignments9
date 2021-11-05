@@ -68,4 +68,4 @@ def main(argv):
                 img = frame
 
             frame_sf = pygame.image.frombuffer(img.tostring(), img.shape[1::-1], "RGB")
-            frame_sf = pygam
+            frame_sf = pygame.transfo
