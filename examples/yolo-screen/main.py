@@ -70,4 +70,4 @@ def main(argv):
             frame_sf = pygame.image.frombuffer(img.tostring(), img.shape[1::-1], "RGB")
             frame_sf = pygame.transform.scale(frame_sf, SCREEN_SIZE)
 
-            s
+            screen.blit(frame_sf, (0, 0)
