@@ -72,4 +72,4 @@ def main(argv):
 
             screen.blit(frame_sf, (0, 0))
 
-           
+            fps_sf = font.ren
