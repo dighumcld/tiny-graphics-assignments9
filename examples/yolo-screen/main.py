@@ -73,4 +73,4 @@ def main(argv):
             screen.blit(frame_sf, (0, 0))
 
             fps_sf = font.render("FPS: %.2f"%clock.get_fps(), True, (255, 0, 0))
-            screen.blit(f
+            screen.blit(fps_sf, (0,0)
