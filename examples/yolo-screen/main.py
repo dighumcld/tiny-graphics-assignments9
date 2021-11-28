@@ -76,4 +76,7 @@ def main(argv):
             screen.blit(fps_sf, (0,0))
 
             pygame.display.flip()
-    except Exception as
+    except Exception as e:
+        print(e)
+
+   
