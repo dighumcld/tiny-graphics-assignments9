@@ -80,4 +80,6 @@ def main(argv):
         print(e)
 
     dc.stop()
-    
+    pygame.quit()
+
+if
