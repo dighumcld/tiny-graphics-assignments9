@@ -79,4 +79,5 @@ def main(argv):
     except Exception as e:
         print(e)
 
-   
+    dc.stop()
+    
