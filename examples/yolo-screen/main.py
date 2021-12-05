@@ -82,4 +82,4 @@ def main(argv):
     dc.stop()
     pygame.quit()
 
-if
+if __name__=='__main
