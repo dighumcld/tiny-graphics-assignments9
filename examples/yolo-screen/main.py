@@ -83,4 +83,4 @@ def main(argv):
     pygame.quit()
 
 if __name__=='__main__':
-    main(sys.arg
+    main(sys.argv)
