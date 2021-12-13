@@ -35,3 +35,28 @@ class YOLO_TF:
         self.conv_7 = self.conv_layer(7,self.pool_6,128,3,1)
         self.pool_8 = self.pooling_layer(8,self.conv_7,2,2)
         self.conv_9 = self.conv_layer(9,self.pool_8,256,3,1)
+        self.pool_10 = self.pooling_layer(10,self.conv_9,2,2)
+        self.conv_11 = self.conv_layer(11,self.pool_10,512,3,1)
+        self.pool_12 = self.pooling_layer(12,self.conv_11,2,2)
+        self.conv_13 = self.conv_layer(13,self.pool_12,1024,3,1)
+        self.conv_14 = self.conv_layer(14,self.conv_13,1024,3,1)
+        self.conv_15 = self.conv_layer(15,self.conv_14,1024,3,1)
+        self.fc_16 = self.fc_layer(16,self.conv_15,256,flat=True,linear=False)
+        self.fc_17 = self.fc_layer(17,self.fc_16,4096,flat=False,linear=False)
+        #skip dropout_18
+        self.fc_19 = self.fc_layer(19,self.fc_17,1470,flat=False,linear=True)
+        self.sess = tf.Session()
+        self.sess.run(tf.global_variables_initializer())
+        self.saver = tf.train.Saver()
+        self.saver.restore(self.sess,self.weights_file)
+
+        if DEBUG: print("Loading complete!" + '\n')
+
+    def conv_layer(self,idx,inputs,filters,size,stride):
+        channels = inputs.get_shape()[3]
+        weight = tf.Variable(tf.truncated_normal([size,size,int(channels),filters], stddev=0.1))
+        biases = tf.Variable(tf.constant(0.1, shape=[filters]))
+
+        pad_size = size//2
+        pad_mat = np.array([[0,0],[pad_size,pad_size],[pad_size,pad_size],[0,0]])
+        inputs_pad = tf.pad(inputs,pad_mat)
