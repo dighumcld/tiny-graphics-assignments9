@@ -88,3 +88,22 @@ class YOLO_TF:
         if linear : return tf.add(tf.matmul(inputs_processed,weight),biases,name=str(idx)+'_fc')
         ip = tf.add(tf.matmul(inputs_processed,weight),biases)
         return tf.maximum(self.alpha*ip,ip,name=str(idx)+'_fc')
+
+    def detect_from_cvmat(self,img):
+        s = time.time()
+        self.h_img,self.w_img,_ = img.shape
+        img_resized = cv2.resize(img, (448, 448))
+        img_resized_np = np.asarray(img_resized)
+        inputs = np.zeros((1,448,448,3),dtype='float32')
+        inputs[0] = (img_resized_np/255.0)*2.0-1.0
+        in_dict = {self.x: inputs}
+        net_output = self.sess.run(self.fc_19,feed_dict=in_dict)
+
+        result = self.interpret_output(net_output[0])
+        strtime = str(time.time()-s)
+        if DEBUG : print('Elapsed time : ' + strtime + ' secs' + '\n')
+
+        return result
+
+    def detect_from_file(self,filename):
+        if self.DEBUG : print('Detect from ' + filename)
