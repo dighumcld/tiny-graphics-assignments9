@@ -107,3 +107,24 @@ class YOLO_TF:
 
     def detect_from_file(self,filename):
         if self.DEBUG : print('Detect from ' + filename)
+        img = cv2.imread(filename)
+        img_RGB = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+        return self.detect_from_cvmat(img_RGB)
+
+    def interpret_output(self,output):
+        probs = np.zeros((7,7,2,20))
+        class_probs = np.reshape(output[0:980],(7,7,20))
+        scales = np.reshape(output[980:1078],(7,7,2))
+        boxes = np.reshape(output[1078:],(7,7,2,4))
+        offset = np.transpose(np.reshape(np.array([np.arange(7)]*14),(2,7,7)),(1,2,0))
+
+        boxes[:,:,:,0] += offset
+        boxes[:,:,:,1] += np.transpose(offset,(1,0,2))
+        boxes[:,:,:,0:2] = boxes[:,:,:,0:2] / 7.0
+        boxes[:,:,:,2] = np.multiply(boxes[:,:,:,2],boxes[:,:,:,2])
+        boxes[:,:,:,3] = np.multiply(boxes[:,:,:,3],boxes[:,:,:,3])
+
+        boxes[:,:,:,0] *= self.w_img
+        boxes[:,:,:,1] *= self.h_img
+        boxes[:,:,:,2] *= self.w_img
+        boxes[:,:,:,3] *= self.h_img
