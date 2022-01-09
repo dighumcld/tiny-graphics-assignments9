@@ -158,3 +158,18 @@ class YOLO_TF:
         result = []
         for i in range(len(boxes_filtered)):
             result.append([self.classes[classes_num_filtered[i]],boxes_filtered[i][0],boxes_filtered[i][1],boxes_filtered[i][2],boxes_filtered[i][3],probs_filtered[i]])
+
+        return result
+
+    def show_results(self,img,results):
+        img_cp = img.copy()
+
+        for i in range(len(results)):
+            x = int(results[i][1])
+            y = int(results[i][2])
+            w = int(results[i][3])//2
+            h = int(results[i][4])//2
+            if DEBUG : print('  class : ' + results[i][0] + ' , [x,y,w,h]=[' + str(x) + ',' + str(y) + ',' + str(int(results[i][3])) + ',' + str(int(results[i][4]))+'], Confidence = ' + str(results[i][5]))
+
+            cv2.rectangle(img_cp,(x-w,y-h),(x+w,y+h),(0,255,0),2)
+            cv2.rectangle(img_cp,(x-w,y-h-20),(x+w,y-h),(125,125,125),-1)
