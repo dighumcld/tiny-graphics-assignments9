@@ -142,3 +142,19 @@ class YOLO_TF:
         argsort = np.array(np.argsort(probs_filtered))[::-1]
         boxes_filtered = boxes_filtered[argsort]
         probs_filtered = probs_filtered[argsort]
+        classes_num_filtered = classes_num_filtered[argsort]
+
+        for i in range(len(boxes_filtered)):
+            if probs_filtered[i] == 0 : continue
+            for j in range(i+1,len(boxes_filtered)):
+                if self.iou(boxes_filtered[i],boxes_filtered[j]) > self.iou_threshold :
+                    probs_filtered[j] = 0.0
+
+        filter_iou = np.array(probs_filtered>0.0,dtype='bool')
+        boxes_filtered = boxes_filtered[filter_iou]
+        probs_filtered = probs_filtered[filter_iou]
+        classes_num_filtered = classes_num_filtered[filter_iou]
+
+        result = []
+        for i in range(len(boxes_filtered)):
+            result.append([self.classes[classes_num_filtered[i]],boxes_filtered[i][0],boxes_filtered[i][1],boxes_filtered[i][2],boxes_filtered[i][3],probs_filtered[i]])
