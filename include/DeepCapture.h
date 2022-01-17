@@ -14,3 +14,7 @@ public:
   virtual void stop() = 0;
   virtual PixelBuffer* get_buffer() = 0;
 };
+
+DeepCapture* create_display_capture();
+
+#endif
