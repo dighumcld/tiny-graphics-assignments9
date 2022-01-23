@@ -26,3 +26,11 @@ private:
       CGDisplayStreamUpdateRef updateRef);
 
   CGDisplayStreamRef stream_ref;
+  pthread_mutex_t mutex;
+
+  int width;
+  int height;
+  PixelBuffer* buffer;
+};
+
+#endif
