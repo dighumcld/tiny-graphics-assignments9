@@ -1,2 +1,4 @@
 #ifndef _PIXELBUFFER_H_
-#define _PIXE
+#define _PIXELBUFFER_H_
+
+#ifnde
