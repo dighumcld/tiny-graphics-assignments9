@@ -2,4 +2,5 @@
 #define _PIXELBUFFER_H_
 
 #ifndef SWIG
-#include <cstd
+#include <cstdint>
+#incl
