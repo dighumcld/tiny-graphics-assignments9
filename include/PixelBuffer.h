@@ -3,4 +3,4 @@
 
 #ifndef SWIG
 #include <cstdint>
-#incl
+#include <cstring>
