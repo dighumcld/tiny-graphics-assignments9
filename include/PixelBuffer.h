@@ -6,4 +6,6 @@
 #include <cstring>
 #include <cassert>
 #include <cstdio>
-#e
+#endif
+
+clas
