@@ -9,4 +9,5 @@
 #endif
 
 class PixelBuffer {
-publ
+public:
+  PixelBuf
