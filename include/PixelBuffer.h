@@ -8,4 +8,5 @@
 #include <cstdio>
 #endif
 
-clas
+class PixelBuffer {
+publ
