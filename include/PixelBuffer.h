@@ -10,4 +10,4 @@
 
 class PixelBuffer {
 public:
-  PixelBuf
+  PixelBuffer(uint32
