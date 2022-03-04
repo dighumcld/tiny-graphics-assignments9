@@ -10,4 +10,4 @@
 
 class PixelBuffer {
 public:
-  PixelBuffer(uint32
+  PixelBuffer(uint32_t width, uint
