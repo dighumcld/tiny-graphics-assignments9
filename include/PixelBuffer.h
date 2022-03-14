@@ -14,4 +14,4 @@ public:
     this->width = width;
     this->height = height;
     this->bpp = bpp;
-    this-
+    this->size = width * hei
