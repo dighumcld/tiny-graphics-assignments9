@@ -15,4 +15,4 @@ public:
     this->height = height;
     this->bpp = bpp;
     this->size = width * height * bpp;
-    this
+    this->buffer = new ui
