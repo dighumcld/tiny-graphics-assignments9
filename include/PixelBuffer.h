@@ -15,4 +15,4 @@ public:
     this->height = height;
     this->bpp = bpp;
     this->size = width * height * bpp;
-    this->buffer = new ui
+    this->buffer = new uint8_t[size];
