@@ -16,3 +16,5 @@ public:
     this->bpp = bpp;
     this->size = width * height * bpp;
     this->buffer = new uint8_t[size];
+  };
+  ~PixelBu
