@@ -18,4 +18,7 @@ public:
     this->buffer = new uint8_t[size];
   };
   ~PixelBuffer(){
-  	delete buf
+  	delete buffer;
+  };
+
+  Pixe
