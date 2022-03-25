@@ -21,4 +21,4 @@ public:
   	delete buffer;
   };
 
-  Pixe
+  PixelBuffer* copy() {
