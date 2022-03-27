@@ -22,3 +22,4 @@ public:
   };
 
   PixelBuffer* copy() {
+    PixelBuffer* 
