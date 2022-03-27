@@ -22,4 +22,4 @@ public:
   };
 
   PixelBuffer* copy() {
-    PixelBuffer* buf = new PixelB
+    PixelBuffer* buf = new PixelBuffer(width, hei
