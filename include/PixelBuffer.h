@@ -23,4 +23,5 @@ public:
 
   PixelBuffer* copy() {
     PixelBuffer* buf = new PixelBuffer(width, height, bpp);
-    memcpy(buf->buffer, buffe
+    memcpy(buf->buffer, buffer, size);
+  
