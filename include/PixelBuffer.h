@@ -27,4 +27,4 @@ public:
     return buf;
   }
 
-  PixelBuffer* crop(uint32_t x, uint
+  PixelBuffer* crop(uint32_t x, uint32_t y, uint32_t w, uin
