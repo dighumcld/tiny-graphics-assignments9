@@ -28,4 +28,5 @@ public:
   }
 
   PixelBuffer* crop(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
-  	assert(x + w <= wi
+  	assert(x + w <= width);
+  	assert(
