@@ -31,4 +31,4 @@ public:
   	assert(x + w <= width);
   	assert(y + h <= height);
 
-  	PixelBuffer* buf = new Pixel
+  	PixelBuffer* buf = new PixelBuffer(w, h, bpp
