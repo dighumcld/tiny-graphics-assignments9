@@ -33,4 +33,4 @@ public:
 
   	PixelBuffer* buf = new PixelBuffer(w, h, bpp);
   	uint8_t* ps = buffer + x * bpp + y * width * bpp;
-  	uint8_t* p
+  	uint8_t* pd = buf->buffe
