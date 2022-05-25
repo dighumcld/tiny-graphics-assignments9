@@ -35,4 +35,5 @@ public:
   	uint8_t* ps = buffer + x * bpp + y * width * bpp;
   	uint8_t* pd = buf->buffer;
   	for(int i = 0; i < h; i++) {
-  		memcpy(pd, ps, w * b
+  		memcpy(pd, ps, w * bpp);
+  		ps += width
