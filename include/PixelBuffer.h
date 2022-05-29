@@ -37,4 +37,6 @@ public:
   	for(int i = 0; i < h; i++) {
   		memcpy(pd, ps, w * bpp);
   		ps += width * bpp;
-  		pd 
+  		pd += w * bpp;
+  	}
+ 
