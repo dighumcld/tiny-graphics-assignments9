@@ -39,4 +39,4 @@ public:
   		ps += width * bpp;
   		pd += w * bpp;
   	}
- 
+  	return 
