@@ -43,4 +43,5 @@ public:
   }
 
   uint32_t width;
-  uint32_t
+  uint32_t height;
+ 
