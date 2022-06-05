@@ -42,4 +42,4 @@ public:
   	return buf;
   }
 
-  u
+  uint32_t widt
