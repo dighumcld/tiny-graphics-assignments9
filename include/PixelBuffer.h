@@ -42,4 +42,5 @@ public:
   	return buf;
   }
 
-  uint32_t widt
+  uint32_t width;
+  uint32_t
