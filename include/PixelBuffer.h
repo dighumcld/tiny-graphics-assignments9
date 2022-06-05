@@ -39,4 +39,7 @@ public:
   		ps += width * bpp;
   		pd += w * bpp;
   	}
-  	return 
+  	return buf;
+  }
+
+  u
