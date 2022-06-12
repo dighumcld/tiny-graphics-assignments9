@@ -48,3 +48,5 @@ public:
   uint32_t size;
   uint8_t* buffer;
 };
+
+#endif
