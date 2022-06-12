@@ -46,4 +46,5 @@ public:
   uint32_t height;
   uint32_t bpp;
   uint32_t size;
-  ui
+  uint8_t* buffer;
+};
