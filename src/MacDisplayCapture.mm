@@ -19,3 +19,18 @@ MacDisplayCapture::~MacDisplayCapture()
 {
   stop();
   delete buffer;
+  pthread_mutex_destroy(&mutex);
+}
+
+void MacDisplayCapture::update(CGDisplayStreamFrameStatus status,
+      uint64_t displayTime,
+      IOSurfaceRef frameSurface,
+      CGDisplayStreamUpdateRef updateRef)
+{
+  if (status == kCGDisplayStreamFrameStatusFrameComplete && frameSurface != NULL)
+  {
+    IOSurfaceLock(frameSurface, kIOSurfaceLockReadOnly, NULL);
+    void* baseAddress = IOSurfaceGetBaseAddress(frameSurface);
+    // int bytesPerRow = IOSurfaceGetBytesPerRow(frameSurface);
+    // int totalBytes = bytesPerRow * height;
+    // assert(totalBytes == buffer->size);
