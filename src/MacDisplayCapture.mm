@@ -34,3 +34,19 @@ void MacDisplayCapture::update(CGDisplayStreamFrameStatus status,
     // int bytesPerRow = IOSurfaceGetBytesPerRow(frameSurface);
     // int totalBytes = bytesPerRow * height;
     // assert(totalBytes == buffer->size);
+
+    pthread_mutex_lock(&mutex);
+    memcpy(buffer->buffer, baseAddress, buffer->size);
+    pthread_mutex_unlock(&mutex);
+
+    IOSurfaceUnlock(frameSurface, kIOSurfaceLockReadOnly, NULL);
+
+    size_t dropped_frames = CGDisplayStreamUpdateGetDropCount(updateRef);
+    if (dropped_frames > 0)
+    {
+      cout << "Dropped: " << dropped_frames << " frames" << endl;
+    }
+  }
+}
+
+void MacDisplayCapture::init()
