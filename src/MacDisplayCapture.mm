@@ -59,3 +59,12 @@ void MacDisplayCapture::init()
   cout << "Displays["<< numDisplays << "]: ";
   for(int i = 0; i < numDisplays; i++)
   {
+    cout << displays[i] << " ";
+  }
+  cout << endl;
+
+  CGDirectDisplayID displayID = CGMainDisplayID();
+
+  width = CGDisplayPixelsWide(displayID);
+  height = CGDisplayPixelsHigh(displayID);
+  buffer = new PixelBuffer(width, height, 4);
