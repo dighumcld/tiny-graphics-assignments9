@@ -50,3 +50,12 @@ void MacDisplayCapture::update(CGDisplayStreamFrameStatus status,
 }
 
 void MacDisplayCapture::init()
+{
+  CGDirectDisplayID displays[MAX_DISPLAYS];
+  uint32_t numDisplays;
+
+  CGGetActiveDisplayList(MAX_DISPLAYS, displays, &numDisplays);
+
+  cout << "Displays["<< numDisplays << "]: ";
+  for(int i = 0; i < numDisplays; i++)
+  {
