@@ -68,3 +68,17 @@ void MacDisplayCapture::init()
   width = CGDisplayPixelsWide(displayID);
   height = CGDisplayPixelsHigh(displayID);
   buffer = new PixelBuffer(width, height, 4);
+
+  NSDictionary *prop = @{
+    (NSString*)kCGDisplayStreamShowCursor: (id)kCFBooleanTrue
+  };
+
+  stream_ref = CGDisplayStreamCreateWithDispatchQueue(displayID,
+    width,
+    height,
+    'BGRA',
+    (CFDictionaryRef)prop,
+    dispatch_queue_create("me.zihao.deep-capture", DISPATCH_QUEUE_SERIAL),
+     ^(CGDisplayStreamFrameStatus status,
+      uint64_t displayTime,
+      IOSurfaceRef frameSurface,
