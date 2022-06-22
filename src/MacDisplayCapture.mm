@@ -82,3 +82,19 @@ void MacDisplayCapture::init()
      ^(CGDisplayStreamFrameStatus status,
       uint64_t displayTime,
       IOSurfaceRef frameSurface,
+      CGDisplayStreamUpdateRef updateRef)
+    {
+      update(status, displayTime,
+        frameSurface, updateRef);
+    });
+}
+
+void MacDisplayCapture::start()
+{
+  CGError err = CGDisplayStreamStart(stream_ref);
+
+  if (err != kCGErrorSuccess)
+  {
+    printf("Error: start failed: %d\n", err);
+  }
+}
