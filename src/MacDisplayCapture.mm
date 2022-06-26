@@ -98,3 +98,18 @@ void MacDisplayCapture::start()
     printf("Error: start failed: %d\n", err);
   }
 }
+
+void MacDisplayCapture::stop()
+{
+  CGError err = CGDisplayStreamStop(stream_ref);
+
+  if (err != kCGErrorSuccess)
+  {
+    printf("Error: stop failed: %d\n", err);
+  }
+}
+
+PixelBuffer* MacDisplayCapture::get_buffer()
+{
+  return buffer;
+}
