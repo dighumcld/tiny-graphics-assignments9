@@ -113,3 +113,4 @@ PixelBuffer* MacDisplayCapture::get_buffer()
 {
   return buffer;
 }
+
