@@ -26,3 +26,23 @@ import_array();
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DeepCapture, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeepCapture__capture" "', argument " "1"" of type '" "DeepCapture *""'");
+  }
+  arg1 = reinterpret_cast< DeepCapture * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DeepCapture__capture" "', argument " "2"" of type '" "uint32_t""'");
+  }
+  arg2 = static_cast< uint32_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DeepCapture__capture" "', argument " "3"" of type '" "uint32_t""'");
+  }
+  arg3 = static_cast< uint32_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DeepCapture__capture" "', argument " "4"" of type '" "uint32_t""'");
+  }
+  arg4 = static_cast< uint32_t >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DeepCapture__capture" "', argument " "5"" of type '" "uint32_t""'");
