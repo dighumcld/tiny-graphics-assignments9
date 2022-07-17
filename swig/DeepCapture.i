@@ -46,3 +46,19 @@ import_array();
   ecode5 = SWIG_AsVal_unsigned_SS_int(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DeepCapture__capture" "', argument " "5"" of type '" "uint32_t""'");
+  }
+  arg5 = static_cast< uint32_t >(val5);
+
+  npy_intp dims[1];
+  dims[0] = (npy_intp) arg4*arg5*arg1->get_buffer()->bpp;
+  array = PyArray_SimpleNew(1, dims, NPY_UINT8);
+  if (!array) SWIG_fail;
+  $1 = (uint8_t*) PyArray_DATA((PyArrayObject*)array);
+}
+
+%typemap(argout) uint8_t* DC_NUMPY_OUT
+{
+  $result = SWIG_Python_AppendOutput($result,(PyObject*)array$argnum);
+}
+
+%include "DeepCapture.h"
