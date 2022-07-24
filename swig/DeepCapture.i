@@ -62,3 +62,25 @@ import_array();
 }
 
 %include "DeepCapture.h"
+
+%extend DeepCapture {
+	void _capture(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint8_t* DC_NUMPY_OUT)
+	{
+		PixelBuffer *buffer = $self->get_buffer()->crop(x, y, w, h);
+
+		memcpy(DC_NUMPY_OUT, buffer->buffer, buffer->size);
+
+		delete buffer;
+	}
+};
+
+%pythoncode %{
+def capture(self, rect=None):
+	if rect is None:
+		rect = [0, 0, self.get_buffer().width, self.get_buffer().height]
+
+	np = self._capture(rect[0], rect[1], rect[2], rect[3])
+
+	return np.reshape((rect[3], rect[2], self.get_buffer().bpp))
+
+DeepCapture.capture = capture
