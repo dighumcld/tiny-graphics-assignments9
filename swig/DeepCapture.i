@@ -84,3 +84,4 @@ def capture(self, rect=None):
 	return np.reshape((rect[3], rect[2], self.get_buffer().bpp))
 
 DeepCapture.capture = capture
+%}
