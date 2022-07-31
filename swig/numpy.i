@@ -41,3 +41,21 @@
 #define NO_IMPORT_ARRAY
 #endif
 #include "stdio.h"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include <numpy/arrayobject.h>
+%}
+
+/**********************************************************************/
+
+%fragment("NumPy_Backward_Compatibility", "header")
+{
+%#if NPY_API_VERSION < 0x00000007
+%#define NPY_ARRAY_DEFAULT NPY_DEFAULT
+%#define NPY_ARRAY_FARRAY  NPY_FARRAY
+%#define NPY_FORTRANORDER  NPY_FORTRAN
+%#endif
+}
+
+/**********************************************************************/
+
+/* The following code originally appeared in
