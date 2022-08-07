@@ -98,3 +98,19 @@
 %#define array_is_fortran(a)    (PyArray_IS_F_CONTIGUOUS((PyArrayObject*)a))
 %#endif
 %#define array_is_contiguous(a) (PyArray_ISCONTIGUOUS((PyArrayObject*)a))
+%#define array_is_native(a)     (PyArray_ISNOTSWAPPED((PyArrayObject*)a))
+}
+
+/**********************************************************************/
+
+%fragment("NumPy_Utilities",
+          "header")
+{
+  /* Given a PyObject, return a string describing its type.
+   */
+  const char* pytype_string(PyObject* py_obj)
+  {
+    if (py_obj == NULL          ) return "C NULL value";
+    if (py_obj == Py_None       ) return "Python None" ;
+    if (PyCallable_Check(py_obj)) return "callable"    ;
+    if (PyString_Check(  py_obj)) return "string"      ;
