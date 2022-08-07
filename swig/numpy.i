@@ -59,3 +59,20 @@
 /**********************************************************************/
 
 /* The following code originally appeared in
+ * enthought/kiva/agg/src/numeric.i written by Eric Jones.  It was
+ * translated from C++ to C by John Hunter.  Bill Spotz has modified
+ * it to fix some minor bugs, upgrade from Numeric to numpy (all
+ * versions), add some comments and functionality, and convert from
+ * direct code insertion to SWIG fragments.
+ */
+
+%fragment("NumPy_Macros", "header")
+{
+/* Macros to extract array attributes.
+ */
+%#if NPY_API_VERSION < 0x00000007
+%#define is_array(a)            ((a) && PyArray_Check((PyArrayObject*)a))
+%#define array_type(a)          (int)(PyArray_TYPE((PyArrayObject*)a))
+%#define array_numdims(a)       (((PyArrayObject*)a)->nd)
+%#define array_dimensions(a)    (((PyArrayObject*)a)->dimensions)
+%#define array_size(a,i)        (((PyArrayObject*)a)->dimensions[i])
