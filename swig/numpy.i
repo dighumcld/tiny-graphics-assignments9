@@ -179,3 +179,20 @@
 
 
 }
+
+/**********************************************************************/
+
+%fragment("NumPy_Object_to_Array",
+          "header",
+          fragment="NumPy_Backward_Compatibility",
+          fragment="NumPy_Macros",
+          fragment="NumPy_Utilities")
+{
+  /* Given a PyObject pointer, cast it to a PyArrayObject pointer if
+   * legal.  If not, set the python error string appropriately and
+   * return NULL.
+   */
+  PyArrayObject* obj_to_array_no_conversion(PyObject* input,
+                                            int        typecode)
+  {
+    PyArrayObject* ary = NULL;
