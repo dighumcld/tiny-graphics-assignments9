@@ -228,3 +228,23 @@
    * correct type.  On failure, the python error string will be set and
    * the routine returns NULL.
    */
+  PyArrayObject* obj_to_array_allow_conversion(PyObject* input,
+                                               int       typecode,
+                                               int*      is_new_object)
+  {
+    PyArrayObject* ary = NULL;
+    PyObject*      py_obj;
+    if (is_array(input) && (typecode == NPY_NOTYPE ||
+                            PyArray_EquivTypenums(array_type(input),typecode)))
+    {
+      ary = (PyArrayObject*) input;
+      *is_new_object = 0;
+    }
+    else
+    {
+      py_obj = PyArray_FROMANY(input, typecode, 0, 0, NPY_ARRAY_DEFAULT);
+      /* If NULL, PyArray_FromObject will have set python error value.*/
+      ary = (PyArrayObject*) py_obj;
+      *is_new_object = 1;
+    }
+    return ary;
