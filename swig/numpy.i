@@ -248,3 +248,15 @@
       *is_new_object = 1;
     }
     return ary;
+  }
+
+  /* Given a PyArrayObject, check to see if it is contiguous.  If so,
+   * return the input pointer and flag it as not a new object.  If it is
+   * not contiguous, create a new PyArrayObject using the original data,
+   * flag it as a new object and return the pointer.
+   */
+  PyArrayObject* make_contiguous(PyArrayObject* ary,
+                                 int*           is_new_object,
+                                 int            min_dims,
+                                 int            max_dims)
+  {
