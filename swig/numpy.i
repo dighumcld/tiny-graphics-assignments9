@@ -298,3 +298,21 @@
       result = (PyArrayObject*) PyArray_FromArray(ary,
                                                   array_descr(ary),
 %#if NPY_API_VERSION < 0x00000007
+                                                  NPY_FORTRANORDER);
+%#else
+                                                  NPY_ARRAY_F_CONTIGUOUS);
+%#endif
+      *is_new_object = 1;
+    }
+    return result;
+  }
+
+  /* Convert a given PyObject to a contiguous PyArrayObject of the
+   * specified type.  If the input object is not a contiguous
+   * PyArrayObject, a new one will be created and the new object flag
+   * will be set.
+   */
+  PyArrayObject* obj_to_array_contiguous_allow_conversion(PyObject* input,
+                                                          int       typecode,
+                                                          int*      is_new_object)
+  {
