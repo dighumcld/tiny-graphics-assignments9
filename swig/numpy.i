@@ -360,3 +360,19 @@
       ary1 = ary2;
     }
     *is_new_object = is_new1 || is_new2;
+    return ary1;
+  }
+} /* end fragment */
+
+/**********************************************************************/
+
+%fragment("NumPy_Array_Requirements",
+          "header",
+          fragment="NumPy_Backward_Compatibility",
+          fragment="NumPy_Macros")
+{
+  /* Test whether a python object is contiguous.  If array is
+   * contiguous, return 1.  Otherwise, set the python error string and
+   * return 0.
+   */
+  int require_contiguous(PyArrayObject* ary)
