@@ -453,3 +453,24 @@
     char dims_str[255] = "";
     char s[255];
     for (i = 0; i < n && !success; i++)
+    {
+      if (array_numdims(ary) == exact_dimensions[i])
+      {
+        success = 1;
+      }
+    }
+    if (!success)
+    {
+      for (i = 0; i < n-1; i++)
+      {
+        sprintf(s, "%d, ", exact_dimensions[i]);
+        strcat(dims_str,s);
+      }
+      sprintf(s, " or %d", exact_dimensions[n-1]);
+      strcat(dims_str,s);
+      PyErr_Format(PyExc_TypeError,
+                   "Array must have %s dimensions.  Given array has %d dimensions",
+                   dims_str,
+                   array_numdims(ary));
+    }
+    return success;
