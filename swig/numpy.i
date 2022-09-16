@@ -550,3 +550,15 @@
 }
 
 /* Combine all NumPy fragments into one for convenience */
+%fragment("NumPy_Fragments",
+          "header",
+          fragment="NumPy_Backward_Compatibility",
+          fragment="NumPy_Macros",
+          fragment="NumPy_Utilities",
+          fragment="NumPy_Object_to_Array",
+          fragment="NumPy_Array_Requirements")
+{
+}
+
+/* End John Hunter translation (with modifications by Bill Spotz)
+ */
