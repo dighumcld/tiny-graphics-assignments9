@@ -562,3 +562,24 @@
 
 /* End John Hunter translation (with modifications by Bill Spotz)
  */
+
+/* %numpy_typemaps() macro
+ *
+ * This macro defines a family of 75 typemaps that allow C arguments
+ * of the form
+ *
+ *    1. (DATA_TYPE IN_ARRAY1[ANY])
+ *    2. (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
+ *    3. (DIM_TYPE DIM1, DATA_TYPE* IN_ARRAY1)
+ *
+ *    4. (DATA_TYPE IN_ARRAY2[ANY][ANY])
+ *    5. (DATA_TYPE* IN_ARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+ *    6. (DIM_TYPE DIM1, DIM_TYPE DIM2, DATA_TYPE* IN_ARRAY2)
+ *    7. (DATA_TYPE* IN_FARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+ *    8. (DIM_TYPE DIM1, DIM_TYPE DIM2, DATA_TYPE* IN_FARRAY2)
+ *
+ *    9. (DATA_TYPE IN_ARRAY3[ANY][ANY][ANY])
+ *   10. (DATA_TYPE* IN_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
+ *   11. (DATA_TYPE** IN_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
+ *   12. (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_ARRAY3)
+ *   13. (DATA_TYPE* IN_FARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
