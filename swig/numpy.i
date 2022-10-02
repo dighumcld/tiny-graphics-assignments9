@@ -663,3 +663,26 @@
  *   74. (DIM_TYPE* DIM1, DIM_TYPE* DIM2, DIM_TYPE* DIM3, DIM_TYPE* DIM4, DATA_TYPE** ARGOUTVIEWM_FARRAY4)
  *
  *   75. (DATA_TYPE* INPLACE_ARRAY_FLAT, DIM_TYPE DIM_FLAT)
+ *
+ * where "DATA_TYPE" is any type supported by the NumPy module, and
+ * "DIM_TYPE" is any int-like type suitable for specifying dimensions.
+ * The difference between "ARRAY" typemaps and "FARRAY" typemaps is
+ * that the "FARRAY" typemaps expect Fortran ordering of
+ * multidimensional arrays.  In python, the dimensions will not need
+ * to be specified (except for the "DATA_TYPE* ARGOUT_ARRAY1"
+ * typemaps).  The IN_ARRAYs can be a numpy array or any sequence that
+ * can be converted to a numpy array of the specified type.  The
+ * INPLACE_ARRAYs must be numpy arrays of the appropriate type.  The
+ * ARGOUT_ARRAYs will be returned as new numpy arrays of the
+ * appropriate type.
+ *
+ * These typemaps can be applied to existing functions using the
+ * %apply directive.  For example:
+ *
+ *     %apply (double* IN_ARRAY1, int DIM1) {(double* series, int length)};
+ *     double prod(double* series, int length);
+ *
+ *     %apply (int DIM1, int DIM2, double* INPLACE_ARRAY2)
+ *           {(int rows, int cols, double* matrix        )};
+ *     void floor(int rows, int cols, double* matrix, double f);
+ *
