@@ -686,3 +686,25 @@
  *           {(int rows, int cols, double* matrix        )};
  *     void floor(int rows, int cols, double* matrix, double f);
  *
+ *     %apply (double IN_ARRAY3[ANY][ANY][ANY])
+ *           {(double tensor[2][2][2]         )};
+ *     %apply (double ARGOUT_ARRAY3[ANY][ANY][ANY])
+ *           {(double low[2][2][2]                )};
+ *     %apply (double ARGOUT_ARRAY3[ANY][ANY][ANY])
+ *           {(double upp[2][2][2]                )};
+ *     void luSplit(double tensor[2][2][2],
+ *                  double low[2][2][2],
+ *                  double upp[2][2][2]    );
+ *
+ * or directly with
+ *
+ *     double prod(double* IN_ARRAY1, int DIM1);
+ *
+ *     void floor(int DIM1, int DIM2, double* INPLACE_ARRAY2, double f);
+ *
+ *     void luSplit(double IN_ARRAY3[ANY][ANY][ANY],
+ *                  double ARGOUT_ARRAY3[ANY][ANY][ANY],
+ *                  double ARGOUT_ARRAY3[ANY][ANY][ANY]);
+ */
+
+%define %numpy_typemaps(DATA_TYPE, DATA_TYPECODE, DIM_TYPE)
