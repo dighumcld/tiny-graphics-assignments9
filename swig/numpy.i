@@ -708,3 +708,22 @@
  */
 
 %define %numpy_typemaps(DATA_TYPE, DATA_TYPECODE, DIM_TYPE)
+
+/************************/
+/* Input Array Typemaps */
+/************************/
+
+/* Typemap suite for (DATA_TYPE IN_ARRAY1[ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE IN_ARRAY1[ANY])
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE IN_ARRAY1[ANY])
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[1] = { $1_dim0 };
