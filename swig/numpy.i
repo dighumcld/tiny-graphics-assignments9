@@ -736,3 +736,20 @@
 }
 %typemap(freearg)
   (DATA_TYPE IN_ARRAY1[ANY])
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
+
+/* Typemap suite for (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
+  (PyArrayObject* array=NULL, int is_new_object=0)
