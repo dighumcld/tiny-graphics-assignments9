@@ -753,3 +753,25 @@
          fragment="NumPy_Fragments")
   (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
   (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[1] = { -1 };
+  array = obj_to_array_contiguous_allow_conversion($input,
+                                                   DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 1) ||
+      !require_size(array, size, 1)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+  $2 = (DIM_TYPE) array_size(array,0);
+}
+%typemap(freearg)
+  (DATA_TYPE* IN_ARRAY1, DIM_TYPE DIM1)
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
+
+/* Typemap suite for (DIM_TYPE DIM1, DATA_TYPE* IN_ARRAY1)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DIM_TYPE DIM1, DATA_TYPE* IN_ARRAY1)
