@@ -789,3 +789,17 @@
                                                    &is_new_object);
   if (!array || !require_dimensions(array, 1) ||
       !require_size(array, size, 1)) SWIG_fail;
+  $1 = (DIM_TYPE) array_size(array,0);
+  $2 = (DATA_TYPE*) array_data(array);
+}
+%typemap(freearg)
+  (DIM_TYPE DIM1, DATA_TYPE* IN_ARRAY1)
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
+
+/* Typemap suite for (DATA_TYPE IN_ARRAY2[ANY][ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
