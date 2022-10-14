@@ -803,3 +803,21 @@
  */
 %typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
            fragment="NumPy_Macros")
+  (DATA_TYPE IN_ARRAY2[ANY][ANY])
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE IN_ARRAY2[ANY][ANY])
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[2] = { $1_dim0, $1_dim1 };
+  array = obj_to_array_contiguous_allow_conversion($input,
+                                                   DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 2) ||
+      !require_size(array, size, 2)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(freearg)
