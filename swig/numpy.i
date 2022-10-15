@@ -836,3 +836,13 @@
   $1 = is_array($input) || PySequence_Check($input);
 }
 %typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* IN_ARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[2] = { -1, -1 };
+  array = obj_to_array_contiguous_allow_conversion($input, DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 2) ||
+      !require_size(array, size, 2)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
