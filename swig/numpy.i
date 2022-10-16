@@ -885,3 +885,26 @@
   if (is_new_object$argnum && array$argnum)
     { Py_DECREF(array$argnum); }
 }
+
+/* Typemap suite for (DATA_TYPE* IN_FARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE* IN_FARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* IN_FARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[2] = { -1, -1 };
+  array = obj_to_array_fortran_allow_conversion($input,
+                                                DATA_TYPECODE,
+                                                &is_new_object);
+  if (!array || !require_dimensions(array, 2) ||
+      !require_size(array, size, 2) || !require_fortran(array)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+  $2 = (DIM_TYPE) array_size(array,0);
+  $3 = (DIM_TYPE) array_size(array,1);
