@@ -908,3 +908,16 @@
   $1 = (DATA_TYPE*) array_data(array);
   $2 = (DIM_TYPE) array_size(array,0);
   $3 = (DIM_TYPE) array_size(array,1);
+}
+%typemap(freearg)
+  (DATA_TYPE* IN_FARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
+
+/* Typemap suite for (DIM_TYPE DIM1, DIM_TYPE DIM2, DATA_TYPE* IN_FARRAY2)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DATA_TYPE* IN_FARRAY2)
