@@ -937,3 +937,11 @@
       !require_size(array, size, 2) || !require_fortran(array)) SWIG_fail;
   $1 = (DIM_TYPE) array_size(array,0);
   $2 = (DIM_TYPE) array_size(array,1);
+  $3 = (DATA_TYPE*) array_data(array);
+}
+%typemap(freearg)
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DATA_TYPE* IN_FARRAY2)
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
