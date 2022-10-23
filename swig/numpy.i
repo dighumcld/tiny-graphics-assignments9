@@ -945,3 +945,30 @@
   if (is_new_object$argnum && array$argnum)
     { Py_DECREF(array$argnum); }
 }
+
+/* Typemap suite for (DATA_TYPE IN_ARRAY3[ANY][ANY][ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE IN_ARRAY3[ANY][ANY][ANY])
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE IN_ARRAY3[ANY][ANY][ANY])
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[3] = { $1_dim0, $1_dim1, $1_dim2 };
+  array = obj_to_array_contiguous_allow_conversion($input,
+                                                   DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 3) ||
+      !require_size(array, size, 3)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(freearg)
+  (DATA_TYPE IN_ARRAY3[ANY][ANY][ANY])
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
