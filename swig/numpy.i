@@ -1012,3 +1012,20 @@
            fragment="NumPy_Macros")
   (DATA_TYPE** IN_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
 {
+  /* for now, only concerned with lists */
+  $1 = PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE** IN_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
+  (DATA_TYPE** array=NULL, PyArrayObject** object_array=NULL, int* is_new_object_array=NULL)
+{
+  npy_intp size[2] = { -1, -1 };
+  PyArrayObject* temp_array;
+  Py_ssize_t i;
+  int is_new_object;
+
+  /* length of the list */
+  $2 = PyList_Size($input);
+
+  /* the arrays */
