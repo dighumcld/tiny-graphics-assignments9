@@ -1059,3 +1059,18 @@
 
     array[i] = (DATA_TYPE*) array_data(temp_array);
   }
+
+  $1 = (DATA_TYPE**) array;
+  $3 = (DIM_TYPE) size[0];
+  $4 = (DIM_TYPE) size[1];
+}
+%typemap(freearg)
+  (DATA_TYPE** IN_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3)
+{
+  Py_ssize_t i;
+
+  if (array$argnum!=NULL) free(array$argnum);
+
+  /*freeing the individual arrays if needed */
+  if (object_array$argnum!=NULL)
+  {
