@@ -1049,3 +1049,13 @@
     if (!temp_array || !require_dimensions(temp_array, 2)) SWIG_fail;
 
     /* store the size of the first array in the list, then use that for comparison. */
+    if (i == 0)
+    {
+      size[0] = array_size(temp_array,0);
+      size[1] = array_size(temp_array,1);
+    }
+
+    if (!require_size(temp_array, size, 2)) SWIG_fail;
+
+    array[i] = (DATA_TYPE*) array_data(temp_array);
+  }
