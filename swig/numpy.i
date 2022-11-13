@@ -1074,3 +1074,20 @@
   /*freeing the individual arrays if needed */
   if (object_array$argnum!=NULL)
   {
+    if (is_new_object_array$argnum!=NULL)
+    {
+      for (i=0; i<$2; i++)
+      {
+        if (object_array$argnum[i] != NULL && is_new_object_array$argnum[i])
+        { Py_DECREF(object_array$argnum[i]); }
+      }
+      free(is_new_object_array$argnum);
+    }
+    free(object_array$argnum);
+  }
+}
+
+/* Typemap suite for (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3,
+ *                    DATA_TYPE* IN_ARRAY3)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
