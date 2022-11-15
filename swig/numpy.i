@@ -1091,3 +1091,21 @@
  *                    DATA_TYPE* IN_ARRAY3)
  */
 %typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_ARRAY3)
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_ARRAY3)
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[3] = { -1, -1, -1 };
+  array = obj_to_array_contiguous_allow_conversion($input, DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 3) ||
+      !require_size(array, size, 3)) SWIG_fail;
+  $1 = (DIM_TYPE) array_size(array,0);
+  $2 = (DIM_TYPE) array_size(array,1);
+  $3 = (DIM_TYPE) array_size(array,2);
