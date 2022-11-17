@@ -1152,3 +1152,16 @@
 /* Typemap suite for (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3,
  *                    DATA_TYPE* IN_FARRAY3)
  */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_FARRAY3)
+{
+  $1 = is_array($input) || PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_FARRAY3)
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[3] = { -1, -1, -1 };
+  array = obj_to_array_fortran_allow_conversion($input,
