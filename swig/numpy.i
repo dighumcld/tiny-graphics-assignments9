@@ -1165,3 +1165,14 @@
 {
   npy_intp size[3] = { -1, -1, -1 };
   array = obj_to_array_fortran_allow_conversion($input,
+                                                   DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 3) ||
+      !require_size(array, size, 3) || !require_fortran(array)) SWIG_fail;
+  $1 = (DIM_TYPE) array_size(array,0);
+  $2 = (DIM_TYPE) array_size(array,1);
+  $3 = (DIM_TYPE) array_size(array,2);
+  $4 = (DATA_TYPE*) array_data(array);
+}
+%typemap(freearg)
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* IN_FARRAY3)
