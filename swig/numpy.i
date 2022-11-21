@@ -1192,3 +1192,18 @@
 %typemap(in,
          fragment="NumPy_Fragments")
   (DATA_TYPE IN_ARRAY4[ANY][ANY][ANY][ANY])
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[4] = { $1_dim0, $1_dim1, $1_dim2 , $1_dim3};
+  array = obj_to_array_contiguous_allow_conversion($input, DATA_TYPECODE,
+                                                   &is_new_object);
+  if (!array || !require_dimensions(array, 4) ||
+      !require_size(array, size, 4)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(freearg)
+  (DATA_TYPE IN_ARRAY4[ANY][ANY][ANY][ANY])
+{
+  if (is_new_object$argnum && array$argnum)
+    { Py_DECREF(array$argnum); }
+}
