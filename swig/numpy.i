@@ -1253,3 +1253,19 @@
 %typemap(in,
          fragment="NumPy_Fragments")
   (DATA_TYPE** IN_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+  (DATA_TYPE** array=NULL, PyArrayObject** object_array=NULL, int* is_new_object_array=NULL)
+{
+  npy_intp size[3] = { -1, -1, -1 };
+  PyArrayObject* temp_array;
+  Py_ssize_t i;
+  int is_new_object;
+
+  /* length of the list */
+  $2 = PyList_Size($input);
+
+  /* the arrays */
+  array = (DATA_TYPE **)malloc($2*sizeof(DATA_TYPE *));
+  object_array = (PyArrayObject **)calloc($2,sizeof(PyArrayObject *));
+  is_new_object_array = (int *)calloc($2,sizeof(int));
+
+  if (array == NULL || object_array == NULL || is_new_object_array == NULL)
