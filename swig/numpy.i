@@ -1269,3 +1269,18 @@
   is_new_object_array = (int *)calloc($2,sizeof(int));
 
   if (array == NULL || object_array == NULL || is_new_object_array == NULL)
+  {
+    SWIG_fail;
+  }
+
+  for (i=0; i<$2; i++)
+  {
+    temp_array = obj_to_array_contiguous_allow_conversion(PySequence_GetItem($input,i), DATA_TYPECODE, &is_new_object);
+
+    /* the new array must be stored so that it can be destroyed in freearg */
+    object_array[i] = temp_array;
+    is_new_object_array[i] = is_new_object;
+
+    if (!temp_array || !require_dimensions(temp_array, 3)) SWIG_fail;
+
+    /* store the size of the first array in the list, then use that for comparison. */
