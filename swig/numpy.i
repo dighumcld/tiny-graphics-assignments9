@@ -1305,3 +1305,23 @@
   (DATA_TYPE** IN_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
 {
   Py_ssize_t i;
+
+  if (array$argnum!=NULL) free(array$argnum);
+
+  /*freeing the individual arrays if needed */
+  if (object_array$argnum!=NULL)
+  {
+    if (is_new_object_array$argnum!=NULL)
+    {
+      for (i=0; i<$2; i++)
+      {
+        if (object_array$argnum[i] != NULL && is_new_object_array$argnum[i])
+        { Py_DECREF(object_array$argnum[i]); }
+      }
+      free(is_new_object_array$argnum);
+    }
+    free(object_array$argnum);
+  }
+}
+
+/* Typemap suite for (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4,
