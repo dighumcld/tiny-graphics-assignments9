@@ -1422,3 +1422,14 @@
 
 /***************************/
 /* In-Place Array Typemaps */
+/***************************/
+
+/* Typemap suite for (DATA_TYPE INPLACE_ARRAY1[ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE INPLACE_ARRAY1[ANY])
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
