@@ -1366,3 +1366,19 @@
   $1 = is_array($input) || PySequence_Check($input);
 }
 %typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* IN_FARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+  (PyArrayObject* array=NULL, int is_new_object=0)
+{
+  npy_intp size[4] = { -1, -1, -1, -1 };
+  array = obj_to_array_fortran_allow_conversion($input, DATA_TYPECODE,
+                                                &is_new_object);
+  if (!array || !require_dimensions(array, 4) ||
+      !require_size(array, size, 4) | !require_fortran(array)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+  $2 = (DIM_TYPE) array_size(array,0);
+  $3 = (DIM_TYPE) array_size(array,1);
+  $4 = (DIM_TYPE) array_size(array,2);
+  $5 = (DIM_TYPE) array_size(array,3);
+}
+%typemap(freearg)
