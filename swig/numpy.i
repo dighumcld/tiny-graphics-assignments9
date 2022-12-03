@@ -1433,3 +1433,20 @@
   $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
                                                  DATA_TYPECODE);
 }
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE INPLACE_ARRAY1[ANY])
+  (PyArrayObject* array=NULL)
+{
+  npy_intp size[1] = { $1_dim0 };
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,1) || !require_size(array, size, 1) ||
+      !require_contiguous(array) || !require_native(array)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+
+/* Typemap suite for (DATA_TYPE* INPLACE_ARRAY1, DIM_TYPE DIM1)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE* INPLACE_ARRAY1, DIM_TYPE DIM1)
