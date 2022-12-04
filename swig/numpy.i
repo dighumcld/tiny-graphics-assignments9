@@ -1450,3 +1450,19 @@
 %typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
            fragment="NumPy_Macros")
   (DATA_TYPE* INPLACE_ARRAY1, DIM_TYPE DIM1)
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* INPLACE_ARRAY1, DIM_TYPE DIM1)
+  (PyArrayObject* array=NULL, int i=1)
+{
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,1) || !require_contiguous(array)
+      || !require_native(array)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+  $2 = 1;
+  for (i=0; i < array_numdims(array); ++i) $2 *= array_size(array,i);
+}
