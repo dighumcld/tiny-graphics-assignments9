@@ -1508,3 +1508,15 @@
   if (!array || !require_dimensions(array,2) || !require_size(array, size, 2) ||
       !require_contiguous(array) || !require_native(array)) SWIG_fail;
   $1 = ($1_ltype) array_data(array);
+}
+
+/* Typemap suite for (DATA_TYPE* INPLACE_ARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE* INPLACE_ARRAY2, DIM_TYPE DIM1, DIM_TYPE DIM2)
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
