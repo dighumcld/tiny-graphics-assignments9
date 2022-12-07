@@ -1490,3 +1490,21 @@
 }
 
 /* Typemap suite for (DATA_TYPE INPLACE_ARRAY2[ANY][ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE INPLACE_ARRAY2[ANY][ANY])
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE INPLACE_ARRAY2[ANY][ANY])
+  (PyArrayObject* array=NULL)
+{
+  npy_intp size[2] = { $1_dim0, $1_dim1 };
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,2) || !require_size(array, size, 2) ||
+      !require_contiguous(array) || !require_native(array)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
