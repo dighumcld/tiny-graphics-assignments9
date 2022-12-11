@@ -1659,3 +1659,19 @@
 {
   npy_intp size[2] = { -1, -1 };
   PyArrayObject* temp_array;
+  Py_ssize_t i;
+
+  /* length of the list */
+  $2 = PyList_Size($input);
+
+  /* the arrays */
+  array = (DATA_TYPE **)malloc($2*sizeof(DATA_TYPE *));
+  object_array = (PyArrayObject **)calloc($2,sizeof(PyArrayObject *));
+
+  if (array == NULL || object_array == NULL)
+  {
+    SWIG_fail;
+  }
+
+  for (i=0; i<$2; i++)
+  {
