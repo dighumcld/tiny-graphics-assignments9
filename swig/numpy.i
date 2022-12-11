@@ -1606,3 +1606,20 @@
 {
   $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
                                                  DATA_TYPECODE);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE INPLACE_ARRAY3[ANY][ANY][ANY])
+  (PyArrayObject* array=NULL)
+{
+  npy_intp size[3] = { $1_dim0, $1_dim1, $1_dim2 };
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,3) || !require_size(array, size, 3) ||
+      !require_contiguous(array) || !require_native(array)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+
+/* Typemap suite for (DATA_TYPE* INPLACE_ARRAY3, DIM_TYPE DIM1, DIM_TYPE DIM2,
+ *                    DIM_TYPE DIM3)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
