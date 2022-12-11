@@ -1675,3 +1675,19 @@
 
   for (i=0; i<$2; i++)
   {
+    temp_array = obj_to_array_no_conversion(PySequence_GetItem($input,i), DATA_TYPECODE);
+
+    /* the new array must be stored so that it can be destroyed in freearg */
+    object_array[i] = temp_array;
+
+    if ( !temp_array || !require_dimensions(temp_array, 2) ||
+      !require_contiguous(temp_array) ||
+      !require_native(temp_array) ||
+      !PyArray_EquivTypenums(array_type(temp_array), DATA_TYPECODE)
+    ) SWIG_fail;
+
+    /* store the size of the first array in the list, then use that for comparison. */
+    if (i == 0)
+    {
+      size[0] = array_size(temp_array,0);
+      size[1] = array_size(temp_array,1);
