@@ -1756,3 +1756,15 @@
   $3 = (DIM_TYPE) array_size(array,1);
   $4 = (DIM_TYPE) array_size(array,2);
 }
+
+/* Typemap suite for (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3,
+ *                    DATA_TYPE* INPLACE_FARRAY3)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DATA_TYPE* INPLACE_FARRAY3)
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
