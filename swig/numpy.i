@@ -1831,3 +1831,19 @@
  *                    DIM_TYPE DIM3, DIM_TYPE DIM4)
  */
 %typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE** INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+{
+  $1 = PySequence_Check($input);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE** INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+  (DATA_TYPE** array=NULL, PyArrayObject** object_array=NULL)
+{
+  npy_intp size[3] = { -1, -1, -1 };
+  PyArrayObject* temp_array;
+  Py_ssize_t i;
+
+  /* length of the list */
+  $2 = PyList_Size($input);
