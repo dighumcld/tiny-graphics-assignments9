@@ -1847,3 +1847,19 @@
 
   /* length of the list */
   $2 = PyList_Size($input);
+
+  /* the arrays */
+  array = (DATA_TYPE **)malloc($2*sizeof(DATA_TYPE *));
+  object_array = (PyArrayObject **)calloc($2,sizeof(PyArrayObject *));
+
+  if (array == NULL || object_array == NULL)
+  {
+    SWIG_fail;
+  }
+
+  for (i=0; i<$2; i++)
+  {
+    temp_array = obj_to_array_no_conversion(PySequence_GetItem($input,i), DATA_TYPECODE);
+
+    /* the new array must be stored so that it can be destroyed in freearg */
+    object_array[i] = temp_array;
