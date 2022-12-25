@@ -1807,3 +1807,27 @@
  */
 %typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
            fragment="NumPy_Macros")
+  (DATA_TYPE* INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE* INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+  (PyArrayObject* array=NULL)
+{
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,4) || !require_contiguous(array) ||
+      !require_native(array)) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+  $2 = (DIM_TYPE) array_size(array,0);
+  $3 = (DIM_TYPE) array_size(array,1);
+  $4 = (DIM_TYPE) array_size(array,2);
+  $5 = (DIM_TYPE) array_size(array,3);
+}
+
+/* Typemap suite for (DATA_TYPE** INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2,
+ *                    DIM_TYPE DIM3, DIM_TYPE DIM4)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
