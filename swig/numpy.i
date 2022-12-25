@@ -1778,3 +1778,19 @@
   $1 = (DIM_TYPE) array_size(array,0);
   $2 = (DIM_TYPE) array_size(array,1);
   $3 = (DIM_TYPE) array_size(array,2);
+  $4 = (DATA_TYPE*) array_data(array);
+}
+
+/* Typemap suite for (DATA_TYPE INPLACE_ARRAY4[ANY][ANY][ANY][ANY])
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
+  (DATA_TYPE INPLACE_ARRAY4[ANY][ANY][ANY][ANY])
+{
+  $1 = is_array($input) && PyArray_EquivTypenums(array_type($input),
+                                                 DATA_TYPECODE);
+}
+%typemap(in,
+         fragment="NumPy_Fragments")
+  (DATA_TYPE INPLACE_ARRAY4[ANY][ANY][ANY][ANY])
+  (PyArrayObject* array=NULL)
