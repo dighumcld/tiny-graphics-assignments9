@@ -1875,3 +1875,22 @@
     {
       size[0] = array_size(temp_array,0);
       size[1] = array_size(temp_array,1);
+      size[2] = array_size(temp_array,2);
+    }
+
+    if (!require_size(temp_array, size, 3)) SWIG_fail;
+
+    array[i] = (DATA_TYPE*) array_data(temp_array);
+  }
+
+  $1 = (DATA_TYPE**) array;
+  $3 = (DIM_TYPE) size[0];
+  $4 = (DIM_TYPE) size[1];
+  $5 = (DIM_TYPE) size[2];
+}
+%typemap(freearg)
+  (DATA_TYPE** INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2, DIM_TYPE DIM3, DIM_TYPE DIM4)
+{
+  if (array$argnum!=NULL) free(array$argnum);
+  if (object_array$argnum!=NULL) free(object_array$argnum);
+}
