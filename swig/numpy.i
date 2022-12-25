@@ -1794,3 +1794,16 @@
          fragment="NumPy_Fragments")
   (DATA_TYPE INPLACE_ARRAY4[ANY][ANY][ANY][ANY])
   (PyArrayObject* array=NULL)
+{
+  npy_intp size[4] = { $1_dim0, $1_dim1, $1_dim2 , $1_dim3 };
+  array = obj_to_array_no_conversion($input, DATA_TYPECODE);
+  if (!array || !require_dimensions(array,4) || !require_size(array, size, 4) ||
+      !require_contiguous(array) || !require_native(array)) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+
+/* Typemap suite for (DATA_TYPE* INPLACE_ARRAY4, DIM_TYPE DIM1, DIM_TYPE DIM2,
+ *                    DIM_TYPE DIM3, DIM_TYPE DIM4)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
