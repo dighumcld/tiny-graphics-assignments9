@@ -1980,3 +1980,19 @@
          fragment="NumPy_Backward_Compatibility,NumPy_Macros")
   (DATA_TYPE ARGOUT_ARRAY1[ANY])
   (PyObject* array = NULL)
+{
+  npy_intp dims[1] = { $1_dim0 };
+  array = PyArray_SimpleNew(1, dims, DATA_TYPECODE);
+  if (!array) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(argout)
+  (DATA_TYPE ARGOUT_ARRAY1[ANY])
+{
+  $result = SWIG_Python_AppendOutput($result,(PyObject*)array$argnum);
+}
+
+/* Typemap suite for (DATA_TYPE* ARGOUT_ARRAY1, DIM_TYPE DIM1)
+ */
+%typemap(in,numinputs=1,
+         fragment="NumPy_Fragments")
