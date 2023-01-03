@@ -1996,3 +1996,18 @@
  */
 %typemap(in,numinputs=1,
          fragment="NumPy_Fragments")
+  (DATA_TYPE* ARGOUT_ARRAY1, DIM_TYPE DIM1)
+  (PyObject* array = NULL)
+{
+  npy_intp dims[1];
+  if (!PyInt_Check($input))
+  {
+    const char* typestring = pytype_string($input);
+    PyErr_Format(PyExc_TypeError,
+                 "Int dimension expected.  '%s' given.",
+                 typestring);
+    SWIG_fail;
+  }
+  $2 = (DIM_TYPE) PyInt_AsLong($input);
+  dims[0] = (npy_intp) $2;
+  array = PyArray_SimpleNew(1, dims, DATA_TYPECODE);
