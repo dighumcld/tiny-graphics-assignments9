@@ -2011,3 +2011,14 @@
   $2 = (DIM_TYPE) PyInt_AsLong($input);
   dims[0] = (npy_intp) $2;
   array = PyArray_SimpleNew(1, dims, DATA_TYPECODE);
+  if (!array) SWIG_fail;
+  $1 = (DATA_TYPE*) array_data(array);
+}
+%typemap(argout)
+  (DATA_TYPE* ARGOUT_ARRAY1, DIM_TYPE DIM1)
+{
+  $result = SWIG_Python_AppendOutput($result,(PyObject*)array$argnum);
+}
+
+/* Typemap suite for (DIM_TYPE DIM1, DATA_TYPE* ARGOUT_ARRAY1)
+ */
