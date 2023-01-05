@@ -2022,3 +2022,16 @@
 
 /* Typemap suite for (DIM_TYPE DIM1, DATA_TYPE* ARGOUT_ARRAY1)
  */
+%typemap(in,numinputs=1,
+         fragment="NumPy_Fragments")
+  (DIM_TYPE DIM1, DATA_TYPE* ARGOUT_ARRAY1)
+  (PyObject* array = NULL)
+{
+  npy_intp dims[1];
+  if (!PyInt_Check($input))
+  {
+    const char* typestring = pytype_string($input);
+    PyErr_Format(PyExc_TypeError,
+                 "Int dimension expected.  '%s' given.",
+                 typestring);
+    SWIG_fail;
