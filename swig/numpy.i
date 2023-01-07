@@ -2051,3 +2051,20 @@
 /* Typemap suite for (DATA_TYPE ARGOUT_ARRAY2[ANY][ANY])
  */
 %typemap(in,numinputs=0,
+         fragment="NumPy_Backward_Compatibility,NumPy_Macros")
+  (DATA_TYPE ARGOUT_ARRAY2[ANY][ANY])
+  (PyObject* array = NULL)
+{
+  npy_intp dims[2] = { $1_dim0, $1_dim1 };
+  array = PyArray_SimpleNew(2, dims, DATA_TYPECODE);
+  if (!array) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(argout)
+  (DATA_TYPE ARGOUT_ARRAY2[ANY][ANY])
+{
+  $result = SWIG_Python_AppendOutput($result,(PyObject*)array$argnum);
+}
+
+/* Typemap suite for (DATA_TYPE ARGOUT_ARRAY3[ANY][ANY][ANY])
+ */
