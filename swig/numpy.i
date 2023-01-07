@@ -2068,3 +2068,16 @@
 
 /* Typemap suite for (DATA_TYPE ARGOUT_ARRAY3[ANY][ANY][ANY])
  */
+%typemap(in,numinputs=0,
+         fragment="NumPy_Backward_Compatibility,NumPy_Macros")
+  (DATA_TYPE ARGOUT_ARRAY3[ANY][ANY][ANY])
+  (PyObject* array = NULL)
+{
+  npy_intp dims[3] = { $1_dim0, $1_dim1, $1_dim2 };
+  array = PyArray_SimpleNew(3, dims, DATA_TYPECODE);
+  if (!array) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(argout)
+  (DATA_TYPE ARGOUT_ARRAY3[ANY][ANY][ANY])
+{
