@@ -2093,3 +2093,21 @@
 {
   npy_intp dims[4] = { $1_dim0, $1_dim1, $1_dim2, $1_dim3 };
   array = PyArray_SimpleNew(4, dims, DATA_TYPECODE);
+  if (!array) SWIG_fail;
+  $1 = ($1_ltype) array_data(array);
+}
+%typemap(argout)
+  (DATA_TYPE ARGOUT_ARRAY4[ANY][ANY][ANY][ANY])
+{
+  $result = SWIG_Python_AppendOutput($result,(PyObject*)array$argnum);
+}
+
+/*****************************/
+/* Argoutview Array Typemaps */
+/*****************************/
+
+/* Typemap suite for (DATA_TYPE** ARGOUTVIEW_ARRAY1, DIM_TYPE* DIM1)
+ */
+%typemap(in,numinputs=0)
+  (DATA_TYPE** ARGOUTVIEW_ARRAY1, DIM_TYPE* DIM1    )
+  (DATA_TYPE*  data_temp = NULL , DIM_TYPE  dim_temp)
