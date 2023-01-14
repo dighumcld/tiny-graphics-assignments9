@@ -2126,3 +2126,16 @@
   if (!array) SWIG_fail;
   $result = SWIG_Python_AppendOutput($result,obj);
 }
+
+/* Typemap suite for (DIM_TYPE* DIM1, DATA_TYPE** ARGOUTVIEW_ARRAY1)
+ */
+%typemap(in,numinputs=0)
+  (DIM_TYPE* DIM1    , DATA_TYPE** ARGOUTVIEW_ARRAY1)
+  (DIM_TYPE  dim_temp, DATA_TYPE*  data_temp = NULL )
+{
+  $1 = &dim_temp;
+  $2 = &data_temp;
+}
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility")
+  (DIM_TYPE* DIM1, DATA_TYPE** ARGOUTVIEW_ARRAY1)
