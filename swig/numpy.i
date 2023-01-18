@@ -2202,3 +2202,23 @@
   $2 = &dim1_temp;
   $3 = &dim2_temp;
 }
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility,NumPy_Array_Requirements")
+  (DATA_TYPE** ARGOUTVIEW_FARRAY2, DIM_TYPE* DIM1, DIM_TYPE* DIM2)
+{
+  npy_intp dims[2] = { *$2, *$3 };
+  PyObject* obj = PyArray_SimpleNewFromData(2, dims, DATA_TYPECODE, (void*)(*$1));
+  PyArrayObject* array = (PyArrayObject*) obj;
+
+  if (!array || !require_fortran(array)) SWIG_fail;
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/* Typemap suite for (DIM_TYPE* DIM1, DIM_TYPE* DIM2, DATA_TYPE** ARGOUTVIEW_FARRAY2)
+ */
+%typemap(in,numinputs=0)
+  (DIM_TYPE* DIM1     , DIM_TYPE* DIM2     , DATA_TYPE** ARGOUTVIEW_FARRAY2)
+  (DIM_TYPE  dim1_temp, DIM_TYPE  dim2_temp, DATA_TYPE*  data_temp = NULL  )
+{
+  $1 = &dim1_temp;
+  $2 = &dim2_temp;
