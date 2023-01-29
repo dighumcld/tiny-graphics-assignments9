@@ -2240,3 +2240,24 @@
                       DIM_TYPE* DIM3)
  */
 %typemap(in,numinputs=0)
+  (DATA_TYPE** ARGOUTVIEW_ARRAY3, DIM_TYPE* DIM1    , DIM_TYPE* DIM2    , DIM_TYPE* DIM3    )
+  (DATA_TYPE* data_temp = NULL  , DIM_TYPE dim1_temp, DIM_TYPE dim2_temp, DIM_TYPE dim3_temp)
+{
+  $1 = &data_temp;
+  $2 = &dim1_temp;
+  $3 = &dim2_temp;
+  $4 = &dim3_temp;
+}
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility")
+  (DATA_TYPE** ARGOUTVIEW_ARRAY3, DIM_TYPE* DIM1, DIM_TYPE* DIM2, DIM_TYPE* DIM3)
+{
+  npy_intp dims[3] = { *$2, *$3, *$4 };
+  PyObject* obj = PyArray_SimpleNewFromData(3, dims, DATA_TYPECODE, (void*)(*$1));
+  PyArrayObject* array = (PyArrayObject*) obj;
+
+  if (!array) SWIG_fail;
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/* Typemap suite for (DIM_TYPE* DIM1, DIM_TYPE* DIM2, DIM_TYPE* DIM3,
