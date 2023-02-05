@@ -2341,3 +2341,17 @@
 {
   $1 = &data_temp;
   $2 = &dim1_temp;
+  $3 = &dim2_temp;
+  $4 = &dim3_temp;
+  $5 = &dim4_temp;
+}
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility")
+  (DATA_TYPE** ARGOUTVIEW_ARRAY4, DIM_TYPE* DIM1, DIM_TYPE* DIM2, DIM_TYPE* DIM3, DIM_TYPE* DIM4)
+{
+  npy_intp dims[4] = { *$2, *$3, *$4 , *$5 };
+  PyObject* obj = PyArray_SimpleNewFromData(4, dims, DATA_TYPECODE, (void*)(*$1));
+  PyArrayObject* array = (PyArrayObject*) obj;
+
+  if (!array) SWIG_fail;
+  $result = SWIG_Python_AppendOutput($result,obj);
