@@ -2438,3 +2438,17 @@
 
 /* Typemap suite for (DATA_TYPE** ARGOUTVIEWM_ARRAY1, DIM_TYPE* DIM1)
  */
+%typemap(in,numinputs=0)
+  (DATA_TYPE** ARGOUTVIEWM_ARRAY1, DIM_TYPE* DIM1    )
+  (DATA_TYPE*  data_temp = NULL  , DIM_TYPE  dim_temp)
+{
+  $1 = &data_temp;
+  $2 = &dim_temp;
+}
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility,NumPy_Utilities")
+  (DATA_TYPE** ARGOUTVIEWM_ARRAY1, DIM_TYPE* DIM1)
+{
+  npy_intp dims[1] = { *$2 };
+  PyObject* obj = PyArray_SimpleNewFromData(1, dims, DATA_TYPECODE, (void*)(*$1));
+  PyArrayObject* array = (PyArrayObject*) obj;
