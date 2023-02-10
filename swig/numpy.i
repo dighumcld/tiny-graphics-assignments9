@@ -2479,3 +2479,12 @@
   $1 = &dim_temp;
   $2 = &data_temp;
 }
+%typemap(argout,
+         fragment="NumPy_Backward_Compatibility,NumPy_Utilities")
+  (DIM_TYPE* DIM1, DATA_TYPE** ARGOUTVIEWM_ARRAY1)
+{
+  npy_intp dims[1] = { *$1 };
+  PyObject* obj = PyArray_SimpleNewFromData(1, dims, DATA_TYPECODE, (void*)(*$2));
+  PyArrayObject* array = (PyArrayObject*) obj;
+
+  if (!array) SWIG_fail;
