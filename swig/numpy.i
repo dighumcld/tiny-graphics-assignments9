@@ -2518,3 +2518,20 @@
          fragment="NumPy_Backward_Compatibility,NumPy_Utilities")
   (DATA_TYPE** ARGOUTVIEWM_ARRAY2, DIM_TYPE* DIM1, DIM_TYPE* DIM2)
 {
+  npy_intp dims[2] = { *$2, *$3 };
+  PyObject* obj = PyArray_SimpleNewFromData(2, dims, DATA_TYPECODE, (void*)(*$1));
+  PyArrayObject* array = (PyArrayObject*) obj;
+
+  if (!array) SWIG_fail;
+
+%#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*$1), SWIGPY_CAPSULE_NAME, free_cap);
+%#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*$1), free);
+%#endif
+
+%#if NPY_API_VERSION < 0x00000007
+  PyArray_BASE(array) = cap;
+%#else
+  PyArray_SetBaseObject(array,cap);
+%#endif
