@@ -2566,3 +2566,20 @@
 %#endif
 
 %#if NPY_API_VERSION < 0x00000007
+  PyArray_BASE(array) = cap;
+%#else
+  PyArray_SetBaseObject(array,cap);
+%#endif
+
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/* Typemap suite for (DATA_TYPE** ARGOUTVIEWM_FARRAY2, DIM_TYPE* DIM1, DIM_TYPE* DIM2)
+ */
+%typemap(in,numinputs=0)
+  (DATA_TYPE** ARGOUTVIEWM_FARRAY2, DIM_TYPE* DIM1     , DIM_TYPE* DIM2     )
+  (DATA_TYPE*  data_temp = NULL   , DIM_TYPE  dim1_temp, DIM_TYPE  dim2_temp)
+{
+  $1 = &data_temp;
+  $2 = &dim1_temp;
+  $3 = &dim2_temp;
