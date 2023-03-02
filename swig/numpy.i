@@ -2776,3 +2776,15 @@
   PyArrayObject* array = (PyArrayObject*) obj;
 
   if (!array || !require_fortran(array)) SWIG_fail;
+
+%#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*$1), SWIGPY_CAPSULE_NAME, free_cap);
+%#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*$1), free);
+%#endif
+
+%#if NPY_API_VERSION < 0x00000007
+  PyArray_BASE(array) = cap;
+%#else
+  PyArray_SetBaseObject(array,cap);
+%#endif
