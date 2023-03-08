@@ -2788,3 +2788,14 @@
 %#else
   PyArray_SetBaseObject(array,cap);
 %#endif
+
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/* Typemap suite for (DATA_TYPE** ARGOUTVIEWM_ARRAY4, DIM_TYPE* DIM1, DIM_TYPE* DIM2,
+                      DIM_TYPE* DIM3, DIM_TYPE* DIM4)
+ */
+%typemap(in,numinputs=0)
+  (DATA_TYPE** ARGOUTVIEWM_ARRAY4, DIM_TYPE* DIM1    , DIM_TYPE* DIM2    , DIM_TYPE* DIM3    , DIM_TYPE* DIM4    )
+  (DATA_TYPE* data_temp = NULL   , DIM_TYPE dim1_temp, DIM_TYPE dim2_temp, DIM_TYPE dim3_temp, DIM_TYPE dim4_temp)
+{
