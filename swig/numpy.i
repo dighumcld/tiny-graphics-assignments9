@@ -2818,3 +2818,16 @@
 %#ifdef SWIGPY_USE_CAPSULE
     PyObject* cap = PyCapsule_New((void*)(*$1), SWIGPY_CAPSULE_NAME, free_cap);
 %#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*$1), free);
+%#endif
+
+%#if NPY_API_VERSION < 0x00000007
+  PyArray_BASE(array) = cap;
+%#else
+  PyArray_SetBaseObject(array,cap);
+%#endif
+
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/* Typemap suite for (DIM_TYPE* DIM1, DIM_TYPE* DIM2, DIM_TYPE* DIM3, DIM_TYPE* DIM4,
