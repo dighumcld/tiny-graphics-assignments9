@@ -3088,3 +3088,19 @@
 %#endif
 
 %#if NPY_API_VERSION < 0x00000007
+  PyArray_BASE(array) = cap;
+%#else
+  PyArray_SetBaseObject(array,cap);
+%#endif
+
+  $result = SWIG_Python_AppendOutput($result,obj);
+}
+
+/**************************************/
+/* In-Place Array Typemap - flattened */
+/**************************************/
+
+/* Typemap suite for (DATA_TYPE* INPLACE_ARRAY_FLAT, DIM_TYPE DIM_FLAT)
+ */
+%typecheck(SWIG_TYPECHECK_DOUBLE_ARRAY,
+           fragment="NumPy_Macros")
