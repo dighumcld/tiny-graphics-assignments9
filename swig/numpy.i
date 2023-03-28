@@ -3139,3 +3139,15 @@
 %numpy_typemaps(long long         , NPY_LONGLONG , int)
 %numpy_typemaps(unsigned long long, NPY_ULONGLONG, int)
 %numpy_typemaps(float             , NPY_FLOAT    , int)
+%numpy_typemaps(double            , NPY_DOUBLE   , int)
+
+/* ***************************************************************
+ * The follow macro expansion does not work, because C++ bool is 4
+ * bytes and NPY_BOOL is 1 byte
+ *
+ *    %numpy_typemaps(bool, NPY_BOOL, int)
+ */
+
+/* ***************************************************************
+ * On my Mac, I get the following warning for this macro expansion:
+ * 'swig/python detected a memory leak of type 'long double *', no destructor found.'
