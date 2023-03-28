@@ -3124,3 +3124,18 @@
 
 %enddef    /* %numpy_typemaps() macro */
 /* *************************************************************** */
+
+/* Concrete instances of the %numpy_typemaps() macro: Each invocation
+ * below applies all of the typemaps above to the specified data type.
+ */
+%numpy_typemaps(signed char       , NPY_BYTE     , int)
+%numpy_typemaps(unsigned char     , NPY_UBYTE    , int)
+%numpy_typemaps(short             , NPY_SHORT    , int)
+%numpy_typemaps(unsigned short    , NPY_USHORT   , int)
+%numpy_typemaps(int               , NPY_INT      , int)
+%numpy_typemaps(unsigned int      , NPY_UINT     , int)
+%numpy_typemaps(long              , NPY_LONG     , int)
+%numpy_typemaps(unsigned long     , NPY_ULONG    , int)
+%numpy_typemaps(long long         , NPY_LONGLONG , int)
+%numpy_typemaps(unsigned long long, NPY_ULONGLONG, int)
+%numpy_typemaps(float             , NPY_FLOAT    , int)
