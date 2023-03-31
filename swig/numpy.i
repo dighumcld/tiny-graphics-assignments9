@@ -3151,3 +3151,13 @@
 /* ***************************************************************
  * On my Mac, I get the following warning for this macro expansion:
  * 'swig/python detected a memory leak of type 'long double *', no destructor found.'
+ *
+ *    %numpy_typemaps(long double, NPY_LONGDOUBLE, int)
+ */
+
+#ifdef __cplusplus
+
+%include <std_complex.i>
+
+%numpy_typemaps(std::complex<float>,  NPY_CFLOAT , int)
+%numpy_typemaps(std::complex<double>, NPY_CDOUBLE, int)
