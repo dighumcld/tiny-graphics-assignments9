@@ -3161,3 +3161,7 @@
 
 %numpy_typemaps(std::complex<float>,  NPY_CFLOAT , int)
 %numpy_typemaps(std::complex<double>, NPY_CDOUBLE, int)
+
+#endif
+
+#endif /* SWIGPYTHON */
